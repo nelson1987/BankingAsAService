@@ -6,16 +6,20 @@
         {
         }
     }
+
     public class DomainException
     {
         public string Erro { get; set; }
+
         public DomainException(string erro)
         {
             Erro = erro;
         }
     }
+
     public static class ErroPadrao
     {
-        public static DomainException Teste { get { return new DomainException("Testo do Erro"); } }
+        public static DomainException Teste
+        { get { return new DomainException("Testo do Erro"); } }
     }
 }

@@ -1,4 +1,4 @@
-using Baas.Api.Controllers;
+using Baas.Api.Filters;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

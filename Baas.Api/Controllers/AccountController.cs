@@ -56,6 +56,7 @@ namespace Baas.Api.Controllers
             return CreatedAtAction(nameof(GetEnterprise), new { id = empresa.Id }, empresa);
         }
         */
+
         [HttpPost]
         public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)
         {
@@ -68,6 +69,7 @@ namespace Baas.Api.Controllers
             //
             //return Ok(response.Value);
         }
+
         /*
         [HttpDelete("/Enterprise")]
         public async Task<IActionResult> DeleteEnterprise([FromBody] EnterpriseModel empresa)
@@ -82,6 +84,7 @@ namespace Baas.Api.Controllers
         }
         */
     }
+
     public class EnterpriseModel
     {
         public int Id { get; set; }

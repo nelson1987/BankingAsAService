@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 
 namespace Baas.Api.Filters
@@ -7,12 +8,15 @@ namespace Baas.Api.Filters
     {
         public HttpResponseException(int statusCode, object? value = null) =>
             (StatusCode, Value) = (statusCode, value);
+
         public int StatusCode { get; }
         public object? Value { get; }
     }
+
     public class HttpResponseExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order => int.MaxValue - 10;
+
         public void OnActionExecuting(ActionExecutingContext context)
         {
             ////var param = context.ActionArguments.SingleOrDefault();// p => p.Value is IEntity);
@@ -27,6 +31,7 @@ namespace Baas.Api.Filters
             ////    context.Result = new UnprocessableEntityObjectResult(context.ModelState);
             ////}
         }
+
         public void OnActionExecuted(ActionExecutedContext context)
         {
             if (context.Exception is HttpResponseException httpResponseException)
@@ -40,12 +45,15 @@ namespace Baas.Api.Filters
             }
         }
     }
+
     public class HttpResponseDomainExceptionFilter : IActionFilter, IOrderedFilter
     {
         public int Order => int.MaxValue - 10;
+
         public void OnActionExecuting(ActionExecutingContext context)
         {
         }
+
         public void OnActionExecuted(ActionExecutedContext context)
         {
             if (context.Result is HttpResponseException httpResponseException)
@@ -59,14 +67,15 @@ namespace Baas.Api.Filters
             }
         }
     }
+
     public class InactivedEndpointAttribute : Attribute, IActionFilter
     {
         public void OnActionExecuting(ActionExecutingContext context)
         {
             context.Result = new BadRequestObjectResult("Endpoint Inativo");
         }
+
         public void OnActionExecuted(ActionExecutedContext context)
         { }
     }
-
 }

@@ -8,12 +8,15 @@ namespace Baas.Domain.Account.Create
     {
         public int Id { get; set; }
     }
+
     public class CreateAccountResponse
     {
     }
+
     public class CreateAccountModel
     {
     }
+
     public class CreateAccountHandler : IRequestHandler<CreateAccountCommand, CreateAccountResponse>
     {
         public async Task<CreateAccountResponse> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
