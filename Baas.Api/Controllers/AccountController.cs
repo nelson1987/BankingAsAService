@@ -10,7 +10,7 @@ namespace Baas.Api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public partial class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
         private readonly IMediator _mediator;
@@ -19,22 +19,6 @@ namespace Baas.Api.Controllers
         {
             _mediator = mediator;
         }
-
-        ///// <summary>
-        ///// Criar Empresa
-        ///// </summary>
-        ///// <param name="empresa"></param>
-        ///// <returns></returns>
-        //[HttpGet]/*("/Enterprise/{id:int}")]*/
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<IActionResult> GetEnterprise()/*[FromRoute] int id)*/
-        //{
-        //    var result = await _mediator.Send(new )
-        //    //return BadRequest(ErroPadrao.Teste);
-        //    //throw new HttpResponseException(400,"teste");
-        //    return Ok();
-        //}
 
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         //[InactivedEndpoint]
@@ -47,20 +31,7 @@ namespace Baas.Api.Controllers
             });
             return Ok(response);
         }
-        /*
-        /// <summary>
-        /// Criar Empresa
-        /// </summary>
-        /// <param name="empresa"></param>
-        /// <returns></returns>
-        [HttpPost("/Enterprise")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateEnterprise([FromBody] EnterpriseModel empresa)
-        {
-            return CreatedAtAction(nameof(GetEnterprise), new { id = empresa.Id }, empresa);
-        }
-        */
+
 
         //[HttpPost]
         //public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)
@@ -76,12 +47,6 @@ namespace Baas.Api.Controllers
         //}
 
         /*
-        [HttpDelete("/Enterprise")]
-        public async Task<IActionResult> DeleteEnterprise([FromBody] EnterpriseModel empresa)
-        {
-            return Ok();
-        }
-
         [HttpDelete]
         public async Task<IActionResult> DeleteAccount([FromBody] AccountModel conta)
         {

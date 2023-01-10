@@ -1,28 +1,34 @@
-﻿using Baas.Domain.Account.Create;
-using Baas.Domain.Repositories;
+﻿using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
+using Baas.Domain.Repositories.Models;
+using Baas.Infra.DbContext;
 using Dapper;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace Baas.Infra
+namespace Baas.Infra.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
+        private readonly ILogger<AccountRepository> _logger;
         private readonly DbSession _dbSession;
 
-        public AccountRepository(DbSession configuration)
+        public AccountRepository(ILogger<AccountRepository> logger, DbSession dbSession)
         {
-            _dbSession = configuration;
+            _logger = logger;
+            _dbSession = dbSession;
         }
 
         public async Task<AccountModel> CreateAccount(AccountDTO accountDTO)
         {
             using (var conn = _dbSession.Connection)
             {
+                var query = @"INSERT INTO
+                                    NUM_CONTA as Number, 
+                                    IDT_CLIENTE as IdCliente 
+                        From TB_CONTA 
+                        WHERE IDT_CLIENTE = @ID";
+
                 //var query = "Select Top 10 ClienteId,Nome,Idade,Pais From Clientes";
                 //produto = connection.Query<Product>(@"SELECT * FROM Products WHERE ProductID = @ID", new { id = 2 });
                 //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
@@ -52,17 +58,5 @@ namespace Baas.Infra
         {
             throw new System.NotImplementedException();
         }
-    }
-    public class DbSession : IDisposable
-    {
-        public IDbConnection Connection { get; }
-
-        public DbSession(IConfiguration configuration)
-        {
-            Connection = new SqlConnection(configuration
-                     .GetConnectionString("DefaultConnection"));
-            Connection.Open();
-        }
-        public void Dispose() => Connection?.Dispose();
     }
 }

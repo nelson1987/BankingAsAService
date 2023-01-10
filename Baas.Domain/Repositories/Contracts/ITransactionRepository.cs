@@ -1,8 +1,8 @@
-﻿using Baas.Domain.Account.Create;
-using Baas.Domain.Repositories.DTOs;
+﻿using Baas.Domain.Repositories.DTOs;
+using Baas.Domain.Repositories.Models;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Repositories
+namespace Baas.Domain.Repositories.Contracts
 {
     public interface ITransactionRepository
     {

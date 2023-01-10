@@ -1,6 +1,8 @@
 using Baas.Api.Filters;
-using Baas.Domain.Repositories;
+using Baas.Domain.Repositories.Contracts;
 using Baas.Infra;
+using Baas.Infra.DbContext;
+using Baas.Infra.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

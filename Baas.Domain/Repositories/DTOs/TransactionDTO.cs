@@ -1,5 +1,4 @@
 ﻿using Baas.Domain.Account.Create;
-using System;
 
 namespace Baas.Domain.Repositories.DTOs
 {
@@ -9,6 +8,5 @@ namespace Baas.Domain.Repositories.DTOs
         {
             return new TransactionDTO();
         }
-
     }
 }
