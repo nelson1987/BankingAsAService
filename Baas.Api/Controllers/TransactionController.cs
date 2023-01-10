@@ -10,14 +10,15 @@ namespace Baas.Api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ApiController]
-    public partial class TransactionController : ControllerBase
+    public class TransactionController : ControllerBase
     {
         private readonly ILogger<TransactionController> _logger;
         private readonly IMediator _mediator;
 
-        public TransactionController(IMediator mediator)
+        public TransactionController(IMediator mediator, ILogger<TransactionController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]

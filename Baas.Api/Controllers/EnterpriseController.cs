@@ -11,14 +11,15 @@ namespace Baas.Api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ApiController]
-    public partial class EnterpriseController : ControllerBase
+    public class EnterpriseController : ControllerBase
     {
         private readonly ILogger<EnterpriseController> _logger;
         private readonly IMediator _mediator;
 
-        public EnterpriseController(IMediator mediator)
+        public EnterpriseController(IMediator mediator, ILogger<EnterpriseController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         /// <summary>

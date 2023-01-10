@@ -10,14 +10,15 @@ namespace Baas.Api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ApiController]
-    public partial class AccountController : ControllerBase
+    public class AccountController : ControllerBase
     {
         private readonly ILogger<AccountController> _logger;
         private readonly IMediator _mediator;
 
-        public AccountController(IMediator mediator)
+        public AccountController(IMediator mediator, ILogger<AccountController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
