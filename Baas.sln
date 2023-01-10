@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Domain", "Baas.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baas.Domain.Tests", "Baas.Domain.Tests\Baas.Domain.Tests.csproj", "{36881F9C-B089-4260-8708-373DE51D9223}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baas.Infra", "Baas.Infra\Baas.Infra.csproj", "{A8B56746-C74A-47D3-9E2A-A013971C6AEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{36881F9C-B089-4260-8708-373DE51D9223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36881F9C-B089-4260-8708-373DE51D9223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36881F9C-B089-4260-8708-373DE51D9223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8B56746-C74A-47D3-9E2A-A013971C6AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8B56746-C74A-47D3-9E2A-A013971C6AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8B56746-C74A-47D3-9E2A-A013971C6AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8B56746-C74A-47D3-9E2A-A013971C6AEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Baas.Domain\Baas.Domain.csproj" />
+    <ProjectReference Include="..\Baas.Infra\Baas.Infra.csproj" />
   </ItemGroup>
 
 </Project>

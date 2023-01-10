@@ -1,3 +1,4 @@
+using Baas.Domain.Account.Create;
 using NUnit.Framework;
 
 namespace Baas.Domain.Tests

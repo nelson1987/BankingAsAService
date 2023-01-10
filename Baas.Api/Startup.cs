@@ -1,4 +1,6 @@
 using Baas.Api.Filters;
+using Baas.Domain.Repositories;
+using Baas.Infra;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,12 +34,13 @@ namespace Baas.Api
 
             var assembly = AppDomain.CurrentDomain.Load("Baas.Domain");
             services.AddMediatR(assembly);
-            //services.AddMediatR(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Baas.Api", Version = "v1" });
             });
+            services.AddScoped<DbSession>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

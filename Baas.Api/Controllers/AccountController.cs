@@ -36,12 +36,17 @@ namespace Baas.Api.Controllers
         //    return Ok();
         //}
 
-        //[HttpGet]
+        [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         //[InactivedEndpoint]
-        //public async Task<IActionResult> GetAccount()
-        //{
-        //    return Ok();
-        //}
+        public async Task<IActionResult> GetAccount(string numero, string idCliente, string idEmpresa)
+        {
+            var response = await _mediator.Send(new AccountQuery() { 
+                 IdCliente = idCliente,
+                 IdEmpresa = idEmpresa,
+                 Numero = numero
+            });
+            return Ok(response);
+        }
         /*
         /// <summary>
         /// Criar Empresa
@@ -57,18 +62,18 @@ namespace Baas.Api.Controllers
         }
         */
 
-        [HttpPost]
-        public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)
-        {
-            var response = await _mediator.Send(model);
-            return Ok();
-            //if (response.Errors.Any())
-            //{
-            //    return BadRequest(response.Errors);
-            //}
-            //
-            //return Ok(response.Value);
-        }
+        //[HttpPost]
+        //public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)
+        //{
+        //    var response = await _mediator.Send(model);
+        //    return Ok();
+        //    //if (response.Errors.Any())
+        //    //{
+        //    //    return BadRequest(response.Errors);
+        //    //}
+        //    //
+        //    //return Ok(response.Value);
+        //}
 
         /*
         [HttpDelete("/Enterprise")]
