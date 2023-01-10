@@ -24,9 +24,9 @@ namespace Baas.Infra.Repositories
             using (var conn = _dbSession.Connection)
             {
                 var query = @"INSERT INTO
-                                    NUM_CONTA as Number, 
-                                    IDT_CLIENTE as IdCliente 
-                        From TB_CONTA 
+                                    NUM_CONTA as Number,
+                                    IDT_CLIENTE as IdCliente
+                        From TB_CONTA
                         WHERE IDT_CLIENTE = @ID";
 
                 //var query = "Select Top 10 ClienteId,Nome,Idade,Pais From Clientes";
@@ -39,13 +39,12 @@ namespace Baas.Infra.Repositories
 
         public async Task<AccountModel> GetAccount(AccountDTO conta)
         {
-
             using (var conn = _dbSession.Connection)
             {
-                var query = @"Select Top 10 
-                                    NUM_CONTA as Number, 
-                                    IDT_CLIENTE as IdCliente 
-                        From TB_CONTA 
+                var query = @"Select Top 10
+                                    NUM_CONTA as Number,
+                                    IDT_CLIENTE as IdCliente
+                        From TB_CONTA
                         WHERE IDT_CLIENTE = @ID";
                 var model = await conn.QueryFirstAsync<AccountModel>(query, new { id = conta.IdCliente });
                 //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();

@@ -7,6 +7,7 @@ namespace Baas.Domain.Repositories.Contracts
     public interface ITransactionRepository
     {
         Task<AccountModel> GetAccountByNumber(TransactionDTO conta);
+
         Task<AccountModel> CreateAccount(TransactionDTO accountDTO);
     }
 }

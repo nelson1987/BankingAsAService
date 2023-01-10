@@ -5,6 +5,7 @@ namespace Baas.Domain.Account.Create
     public class AccountQueryResponse
     {
         public string Number { get; set; }
+
         public static AccountQueryResponse MappingFromModel(AccountModel criacaoContaResponse)
         {
             return new AccountQueryResponse()

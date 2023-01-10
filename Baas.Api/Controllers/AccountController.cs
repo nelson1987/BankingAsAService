@@ -22,17 +22,16 @@ namespace Baas.Api.Controllers
         }
 
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
-        //[InactivedEndpoint]
         public async Task<IActionResult> GetAccount(string numero, string idCliente, string idEmpresa)
         {
-            var response = await _mediator.Send(new AccountQuery() { 
-                 IdCliente = idCliente,
-                 IdEmpresa = idEmpresa,
-                 Numero = numero
+            var response = await _mediator.Send(new AccountQuery()
+            {
+                IdCliente = idCliente,
+                IdEmpresa = idEmpresa,
+                Numero = numero
             });
             return Ok(response);
         }
-
 
         //[HttpPost]
         //public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)

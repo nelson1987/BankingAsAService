@@ -15,6 +15,7 @@ namespace Baas.Infra.DbContext
                      .GetConnectionString("DefaultConnection"));
             Connection.Open();
         }
+
         public void Dispose() => Connection?.Dispose();
     }
 }

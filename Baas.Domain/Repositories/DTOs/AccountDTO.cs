@@ -12,6 +12,7 @@ namespace Baas.Domain.Repositories.DTOs
         {
             return new AccountDTO();
         }
+
         public static AccountDTO MappingFromModel(AccountQuery request)
         {
             return new AccountDTO()

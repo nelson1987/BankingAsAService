@@ -22,10 +22,9 @@ namespace Baas.Api.Controllers
         }
 
         [HttpGet]
-        //[InactivedEndpoint]
         public async Task<IActionResult> GetStatement()
         {
-            //var response = await _mediator.Send(new AccountQuery() { 
+            //var response = await _mediator.Send(new AccountQuery() {
             //     IdCliente = idCliente,
             //     IdEmpresa = idEmpresa,
             //     Numero = numero
@@ -33,7 +32,6 @@ namespace Baas.Api.Controllers
             //return Ok(response);
             return Ok();
         }
-
 
         [HttpPost("Credit")]
         public async Task<IActionResult> CreateCredit([FromBody] CreateAccountCommand model)

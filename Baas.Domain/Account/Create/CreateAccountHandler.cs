@@ -33,7 +33,7 @@ namespace Baas.Domain.Account.Create
                 throw new System.NotImplementedException();
             return contaResponse;
         }
-        
+
         private async Task<AccountModel> Inserir(CreateAccountCommand request, AccountModel contaResponse)
         {
             var criacaoContaResponse = await _accountRepository.CreateAccount(AccountDTO.MappingFromModel(request));
@@ -41,7 +41,7 @@ namespace Baas.Domain.Account.Create
                 throw new System.NotImplementedException();
             return criacaoContaResponse;
         }
-        
+
         private void Publicar()
         {
             var eventResponse = _mediator.Publish(new CreateAccountEvent());
