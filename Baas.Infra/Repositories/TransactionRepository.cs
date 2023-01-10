@@ -24,15 +24,16 @@ namespace Baas.Infra.Repositories
 
             using (var conn = _dbSession.Connection)
             {
-                var query = @"Select Top 10 
-                                    NUM_CONTA as Number, 
-                                    IDT_CLIENTE as IdCliente 
-                        From TB_CONTA 
-                        WHERE IDT_CLIENTE = @ID";
-                var model = await conn.QueryFirstAsync<AccountModel>(query, new { id = conta });
-                //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
-                return model;
+                //var query = @"Select Top 10 
+                 //                   NUM_CONTA as Number, 
+                 //                   IDT_CLIENTE as IdCliente 
+                 //       From TB_CONTA 
+                 //       WHERE IDT_CLIENTE = @ID";
+                //var model = await conn.QueryFirstAsync<AccountModel>(query, new { id = conta });
+                ////List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
+                //return model;
             }
+            throw new System.Exception();
         }
 
         public Task<AccountModel> GetAccountByNumber(TransactionDTO conta)

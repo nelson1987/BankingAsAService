@@ -1,6 +1,5 @@
 using Baas.Api.Filters;
 using Baas.Domain.Repositories.Contracts;
-using Baas.Infra;
 using Baas.Infra.DbContext;
 using Baas.Infra.Repositories;
 using MediatR;

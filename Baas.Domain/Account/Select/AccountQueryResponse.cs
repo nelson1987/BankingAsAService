@@ -9,7 +9,7 @@ namespace Baas.Domain.Account.Create
         {
             return new AccountQueryResponse()
             {
-                Number = criacaoContaResponse.Number
+                Number = criacaoContaResponse.Numero
             };
         }
     }
