@@ -34,7 +34,7 @@ namespace Baas.Api.Controllers
         }
 
         [HttpPost("Credit")]
-        public async Task<IActionResult> CreateCredit([FromBody] CreateAccountCommand model)
+        public async Task<IActionResult> CreateCredit([FromBody] InsertAccountCommand model)
         {
             var response = await _mediator.Send(model);
             return Ok();
@@ -47,7 +47,7 @@ namespace Baas.Api.Controllers
         }
 
         [HttpPost("Debit")]
-        public async Task<IActionResult> CreateDebit([FromBody] CreateAccountCommand model)
+        public async Task<IActionResult> CreateDebit([FromBody] InsertAccountCommand model)
         {
             var response = await _mediator.Send(model);
             return Ok();

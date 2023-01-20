@@ -10,19 +10,19 @@ namespace Baas.Api.Controllers
     [Produces("application/json")]
     [Consumes("application/json")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class ClientController : ControllerBase
     {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<ClientController> _logger;
         private readonly IMediator _mediator;
 
-        public AccountController(IMediator mediator, ILogger<AccountController> logger)
+        public ClientController(IMediator mediator, ILogger<ClientController> logger)
         {
             _mediator = mediator;
             _logger = logger;
         }
 
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
-        public async Task<IActionResult> GetAccount(string numero, int idCliente)
+        public async Task<IActionResult> Get(string numero, int idCliente)
         {
             var response = await _mediator.Send(new AccountQuery()
             {
@@ -52,10 +52,5 @@ namespace Baas.Api.Controllers
             return Ok();
         }
         */
-    }
-
-    public class EnterpriseModel
-    {
-        public int Id { get; set; }
     }
 }

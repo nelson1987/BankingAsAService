@@ -19,7 +19,7 @@ namespace Baas.Domain.Account.Create
 
         public async Task<AccountQueryResponse> Handle(AccountQuery request, CancellationToken cancellationToken)
         {
-            var contaResponse = await _accountRepository.GetAccount(AccountDTO.MappingFromModel(request));
+            var contaResponse = await _accountRepository.Get(AccountDTO.MappingFromModel(request));
             if (contaResponse == null)
                 throw new System.NotImplementedException();
             return AccountQueryResponse.MappingFromModel(contaResponse);

@@ -48,7 +48,7 @@ namespace Baas.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEnterprise([FromBody] EnterpriseModel empresa)
         {
-            var result = await _mediator.Send(new CreateAccountCommand());
+            var result = await _mediator.Send(new InsertAccountCommand());
             return CreatedAtAction(nameof(GetEnterprise), new { id = empresa.Id }, empresa);
         }
 

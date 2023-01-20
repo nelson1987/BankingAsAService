@@ -3,11 +3,11 @@ using System;
 
 namespace Baas.Domain.Account.Create
 {
-    public class CreateAccountResponse
+    public class InsertAccountResponse
     {
         public string Number { get; set; }
 
-        public static CreateAccountResponse MappingFromModel(AccountModel criacaoContaResponse)
+        public static InsertAccountResponse MappingFromModel(AccountModel criacaoContaResponse)
         {
             throw new NotImplementedException();
         }

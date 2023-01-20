@@ -2,7 +2,6 @@
 using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Repositories.Models;
 using Baas.Infra.DbContext;
-using Dapper;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
@@ -19,26 +18,39 @@ namespace Baas.Infra.Repositories
             _dbSession = dbSession;
         }
 
-        public async Task<AccountModel> CreateAccount(AccountDTO accountDTO)
+        public async Task<AccountModel> CreateAccount(AccountDTO dto)
         {
-            using (var conn = _dbSession.Connection)
-            {
-                var query = @"INSERT INTO
-                                    NUM_CONTA as Number,
-                                    IDT_CLIENTE as IdCliente
-                        From TB_CONTA
-                        WHERE IDT_CLIENTE = @ID";
+            /*
+                using (var conn = _dbSession.Connection)
+                {
+                    var query = @"INSERT INTO
+                                        NUM_CONTA as Number,
+                                        IDT_CLIENTE as IdCliente
+                            From TB_CONTA
+                            WHERE IDT_CLIENTE = @ID";
 
-                //var query = "Select Top 10 ClienteId,Nome,Idade,Pais From Clientes";
-                //produto = connection.Query<Product>(@"SELECT * FROM Products WHERE ProductID = @ID", new { id = 2 });
-                //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
-            }
-            //var clientes = await db.QueryAsync<Cliente>(query);
+                    //var query = "Select Top 10 ClienteId,Nome,Idade,Pais From Clientes";
+                    //produto = connection.Query<Product>(@"SELECT * FROM Products WHERE ProductID = @ID", new { id = 2 });
+                    //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
+                }
+                //var clientes = await db.QueryAsync<Cliente>(query);
+            */
+            throw new System.NotImplementedException();
+        }
+
+        public Task<AccountModel> Delete(AccountDTO conta)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<AccountModel> Get(AccountDTO conta)
+        {
             throw new System.NotImplementedException();
         }
 
         public async Task<AccountModel> GetAccount(AccountDTO conta)
         {
+            /*
             using (var conn = _dbSession.Connection)
             {
                 var query = @"Select Top 10
@@ -50,10 +62,21 @@ namespace Baas.Infra.Repositories
                 //List<Tarefa> tarefas = (await conn.QueryAsync<Tarefa>(sql: query)).ToList();
                 return model;
             }
-            //throw new NotImplementedException();
+            */
+            throw new System.NotImplementedException();
         }
 
-        public Task<AccountModel> GetAccountByNumber(AccountDTO conta)
+        public async Task<AccountModel> GetAccountByNumber(AccountDTO conta)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<AccountModel> Insert(AccountDTO conta)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<AccountModel> Update(AccountDTO conta)
         {
             throw new System.NotImplementedException();
         }

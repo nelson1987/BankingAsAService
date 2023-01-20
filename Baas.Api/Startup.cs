@@ -41,7 +41,7 @@ namespace Baas.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Baas.Api", Version = "v1" });
             });
             services.AddScoped<DbSession>();
-            services.AddTransient<IAccountRepository, AccountRepository>();
+            //services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
         }
 

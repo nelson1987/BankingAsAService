@@ -5,9 +5,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Account\**" />
+    <Compile Remove="Transaction\Credit\**" />
+    <Compile Remove="Transaction\Debit\**" />
+    <EmbeddedResource Remove="Account\**" />
+    <EmbeddedResource Remove="Transaction\Credit\**" />
+    <EmbeddedResource Remove="Transaction\Debit\**" />
+    <None Remove="Account\**" />
+    <None Remove="Transaction\Credit\**" />
+    <None Remove="Transaction\Debit\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repositories\Contracts\IAccountRepository.cs" />
+    <Compile Remove="Repositories\DTOs\AccountDTO.cs" />
+    <Compile Remove="Repositories\DTOs\ClientDTO.cs" />
+    <Compile Remove="Repositories\DTOs\EnterpriseDTO.cs" />
+    <Compile Remove="Repositories\Models\AccountModel.cs" />
+    <Compile Remove="Repositories\Models\ClientModel.cs" />
+    <Compile Remove="Repositories\Models\EnterpriseModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Transaction\" />
   </ItemGroup>
 
 </Project>

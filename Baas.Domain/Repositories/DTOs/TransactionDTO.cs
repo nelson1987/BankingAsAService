@@ -4,7 +4,7 @@ namespace Baas.Domain.Repositories.DTOs
 {
     public class TransactionDTO
     {
-        public static TransactionDTO MappingFromModel(CreateAccountCommand request)
+        public static TransactionDTO MappingFromModel(InsertAccountCommand request)
         {
             return new TransactionDTO();
         }
