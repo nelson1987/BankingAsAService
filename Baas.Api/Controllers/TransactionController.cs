@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Account.Create;
+﻿using Baas.Domain.Transaction;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -33,11 +33,11 @@ namespace Baas.Api.Controllers
             return Ok();
         }
 
-        [HttpPost("Credit")]
-        public async Task<IActionResult> CreateCredit([FromBody] InsertAccountCommand model)
+        [HttpPost]//("Credit")]
+        public async Task<IActionResult> Create([FromBody] GetTransactionQuery model)
         {
             var response = await _mediator.Send(model);
-            return Ok();
+            return Ok(response);
             //if (response.Errors.Any())
             //{
             //    return BadRequest(response.Errors);
@@ -46,11 +46,11 @@ namespace Baas.Api.Controllers
             //return Ok(response.Value);
         }
 
-        [HttpPost("Debit")]
-        public async Task<IActionResult> CreateDebit([FromBody] InsertAccountCommand model)
-        {
-            var response = await _mediator.Send(model);
-            return Ok();
-        }
+        //[HttpPost("Debit")]
+        //public async Task<IActionResult> CreateDebit([FromBody] InsertAccountCommand model)
+        //{
+        //    var response = await _mediator.Send(model);
+        //    return Ok();
+        //}
     }
 }

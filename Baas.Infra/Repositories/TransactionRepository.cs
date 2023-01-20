@@ -2,7 +2,9 @@
 using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Repositories.Models;
 using Baas.Infra.DbContext;
+using Dapper;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Baas.Infra.Repositories
@@ -18,7 +20,7 @@ namespace Baas.Infra.Repositories
             _dbSession = dbSession;
         }
 
-        public Task<AccountModel> CreateAccount(TransactionDTO conta)
+        public async Task<TransactionModel> CreateAccount(TransactionDTO conta)
         {
             using (var conn = _dbSession.Connection)
             {
@@ -34,9 +36,29 @@ namespace Baas.Infra.Repositories
             throw new System.Exception();
         }
 
-        public Task<AccountModel> GetAccountByNumber(TransactionDTO conta)
+        public async Task<IEnumerable<TransactionModel>> GetAccountByNumber(TransactionDTO conta)
         {
-            throw new System.NotImplementedException();
+            using (var conn = _dbSession.Connection)
+            {
+                return await conn.QueryAsync<TransactionModel>
+                    (QuerySelect(), conta);
+            }
+        }
+
+        private static string QuerySelect()
+        {
+            return @"Select 
+                        [IDT_TRANSACTION] as Id
+                        ,[IDT_CONTA] as IdConta
+                        ,[DTA_TRANSACAO] as Transacao
+                        ,[VLR_TRANSACAO] as Valor
+                        ,[DTA_AGENDAMENTO]
+                        ,[BANCO_CONTRAPARTE] as BancoContraParte
+                        ,[AGENCIA_CONTRAPARTE] as AgenciaContraParte
+                        ,[CONTA_CONTRAPARTE] as ContaContraParte
+                        ,[DOCUMENTO_CONTRAPARTE] as DocumentoContraParte
+                    FROM [DB_BAAS].[dbo].[TB_TRANSACAO]
+                    WHERE IDT_CONTA = @Conta";
         }
     }
 }

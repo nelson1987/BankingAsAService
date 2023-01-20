@@ -1,13 +1,14 @@
 ﻿using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Repositories.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Baas.Domain.Repositories.Contracts
 {
     public interface ITransactionRepository
     {
-        Task<AccountModel> GetAccountByNumber(TransactionDTO conta);
+        Task<IEnumerable<TransactionModel>> GetAccountByNumber(TransactionDTO conta);
 
-        Task<AccountModel> CreateAccount(TransactionDTO accountDTO);
+        Task<TransactionModel> CreateAccount(TransactionDTO accountDTO);
     }
 }

@@ -1,12 +1,16 @@
-﻿using Baas.Domain.Account.Create;
+﻿using Baas.Domain.Transaction;
 
 namespace Baas.Domain.Repositories.DTOs
 {
     public class TransactionDTO
     {
-        public static TransactionDTO MappingFromModel(InsertAccountCommand request)
+        public int Conta { get; set; }
+        public static TransactionDTO MappingFromModel(GetTransactionQuery request)
         {
-            return new TransactionDTO();
+            return new TransactionDTO()
+            {
+                Conta = 1
+            };
         }
     }
 }
