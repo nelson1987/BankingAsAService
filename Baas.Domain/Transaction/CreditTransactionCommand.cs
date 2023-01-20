@@ -31,8 +31,26 @@ namespace Baas.Domain.Transaction
         public async Task<IEnumerable<GetTransactionQueryResponse>> Handle(GetTransactionQuery request, CancellationToken cancellationToken)
         {
             var listagem = await _transactionRepository.GetAccountByNumber(TransactionDTO.MappingFromModel(request));
-            return listagem
+            var grid = GridResponse<TransactionModel>.Get(listagem, "1", 3);
+            return grid
                     .Select(x => GetTransactionQueryResponse.MappingFromModel(x));
+        }
+    }
+    public static class GridResponse<T> where T : class
+    {
+
+        public static IEnumerable<T> Get(IEnumerable<T> products, string page, int rows)
+        {
+            int pageIndex = Convert.ToInt32(page) - 1;
+            int pageSize = rows;
+            int totalRecords = products.Count();
+            int totalPages = (int)Math.Ceiling((float)totalRecords / (float)pageSize);
+        
+            var result = (from produto in products
+                            .Skip(pageIndex * pageSize)
+                            .Take(pageSize)
+                          select produto);
+            return result;
         }
     }
     public class GetTransactionQueryResponse
