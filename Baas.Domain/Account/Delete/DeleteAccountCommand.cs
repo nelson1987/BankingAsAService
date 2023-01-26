@@ -1,6 +1,8 @@
-﻿namespace Baas.Domain.Repositories.Models
+﻿using MediatR;
+
+namespace Baas.Domain.Account.Delete
 {
-    public class ClientModel
+    public class DeleteAccountCommand : IRequest<DeleteAccountResponse>
     {
         public int Id { get; set; }
         public string Nome { get; set; }

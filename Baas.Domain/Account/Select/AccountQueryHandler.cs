@@ -9,9 +9,9 @@ namespace Baas.Domain.Account.Create
     public class AccountQueryHandler : IRequestHandler<AccountQuery, AccountQueryResponse>
     {
         private readonly IMediator _mediator;
-        private readonly IAccountRepository _accountRepository;
+        private readonly ICreatedAccountEventRepository _accountRepository;
 
-        public AccountQueryHandler(IMediator mediator, IAccountRepository accountRepository)
+        public AccountQueryHandler(IMediator mediator, ICreatedAccountEventRepository accountRepository)
         {
             _accountRepository = accountRepository;
             _mediator = mediator;

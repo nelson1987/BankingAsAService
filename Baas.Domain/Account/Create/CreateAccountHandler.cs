@@ -1,6 +1,5 @@
 ﻿using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
-using Baas.Domain.Repositories.Models;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,11 +17,17 @@ namespace Baas.Domain.Account.Create
             _mediator = mediator;
         }
 
-        public async Task<InsertAccountResponse> Handle(InsertAccountCommand request, CancellationToken cancellationToken)
+        public async Task<InsertAccountResponse> Handle(InsertAccountCommand command, CancellationToken cancellationToken)
         {
             //AccountModel contaResponse = await ValidarSeExiste(request);
-            AccountModel criacaoContaResponse = await Inserir(request);
-            Publicar();
+
+            //Criacao de Conta em banco Relacional
+            Entities.Account criacaoContaResponse = await _accountRepository.Insert(AccountDTO.MappingFromModel(command));
+
+            //Publicar();
+
+            //Incluir na fila para sincronizar com banco no-sql
+            await _mediator.Send(criacaoContaResponse);
             return InsertAccountResponse.MappingFromModel(criacaoContaResponse);
         }
 
@@ -34,19 +39,19 @@ namespace Baas.Domain.Account.Create
         //    return contaResponse;
         //}
 
-        private async Task<AccountModel> Inserir(InsertAccountCommand command)
-        {
-            var criacaoContaResponse = await _accountRepository.Insert(AccountDTO.MappingFromModel(command));
-            if (criacaoContaResponse == null)
-                throw new System.NotImplementedException();
-            return criacaoContaResponse;
-        }
+        //private async Task<AccountModel> Inserir(InsertAccountCommand command)
+        //{
+        //    var criacaoContaResponse = await _accountRepository.Insert(AccountDTO.MappingFromModel(command));
+        //    if (criacaoContaResponse == null)
+        //        throw new System.NotImplementedException();
+        //    return criacaoContaResponse;
+        //}
 
-        private void Publicar()
-        {
-            var eventResponse = _mediator.Publish(new CreateAccountEvent());
-            if (eventResponse.IsFaulted)
-                throw new System.NotImplementedException();
-        }
+        //private void Publicar()
+        //{
+        //    var eventResponse = _mediator.Publish(new CreateAccountEvent());
+        //    if (eventResponse.IsFaulted)
+        //        throw new System.NotImplementedException();
+        //}
     }
 }

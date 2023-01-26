@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Account.Create
+namespace Baas.Domain.Account.CreatedAccount
 {
-    public class AccountQuery : IRequest<AccountQueryResponse>
+    public class CreatedAccountEvent : INotification
     {
         public int Id { get; set; }
         public string Numero { get; set; }

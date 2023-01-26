@@ -6,34 +6,55 @@
 
   <ItemGroup>
     <Compile Remove="Account\**" />
-    <Compile Remove="Transaction\Credit\**" />
-    <Compile Remove="Transaction\Debit\**" />
+    <Compile Remove="Entities\**" />
+    <Compile Remove="Exceptions\**" />
+    <Compile Remove="Helpers\**" />
+    <Compile Remove="Repositories\DTOs\**" />
+    <Compile Remove="Transaction\**" />
     <EmbeddedResource Remove="Account\**" />
-    <EmbeddedResource Remove="Transaction\Credit\**" />
-    <EmbeddedResource Remove="Transaction\Debit\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <EmbeddedResource Remove="Repositories\DTOs\**" />
+    <EmbeddedResource Remove="Transaction\**" />
     <None Remove="Account\**" />
-    <None Remove="Transaction\Credit\**" />
-    <None Remove="Transaction\Debit\**" />
+    <None Remove="Entities\**" />
+    <None Remove="Exceptions\**" />
+    <None Remove="Helpers\**" />
+    <None Remove="Repositories\DTOs\**" />
+    <None Remove="Transaction\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Repositories\Contracts\IAccountRepository.cs" />
-    <Compile Remove="Repositories\DTOs\AccountDTO.cs" />
-    <Compile Remove="Repositories\DTOs\ClientDTO.cs" />
-    <Compile Remove="Repositories\DTOs\EnterpriseDTO.cs" />
-    <Compile Remove="Repositories\Models\AccountModel.cs" />
-    <Compile Remove="Repositories\Models\ClientModel.cs" />
-    <Compile Remove="Repositories\Models\EnterpriseModel.cs" />
+    <Compile Remove="Repositories\Contracts\ITransactionRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Account\CreatedEvent\CreateAccountEventHandler.cs" />
+    <Compile Include="Account\Create\CreateAccountHandler.cs" />
+    <Compile Include="Account\CreatedEvent\CreatedAccountEvent.cs" />
+    <Compile Include="Account\Create\InsertAccountCommand.cs" />
+    <Compile Include="Account\Create\InsertAccountResponse.cs" />
+    <Compile Include="Account\Delete\DeleteAccountCommand.cs" />
+    <Compile Include="Account\Delete\DeleteAccountHandler.cs" />
+    <Compile Include="Account\Delete\DeleteAccountResponse.cs" />
+    <Compile Include="Account\Select\AccountQuery.cs" />
+    <Compile Include="Account\Select\AccountQueryHandler.cs" />
+    <Compile Include="Account\Select\AccountQueryResponse.cs" />
+    <Compile Include="Account\Update\UpdateAccountCommand.cs" />
+    <Compile Include="Account\Update\UpdateAccountHandler.cs" />
+    <Compile Include="Account\Update\UpdateAccountResponse.cs" />
+    <Compile Include="Repositories\DTOs\AccountDTO.cs" />
+    <Compile Include="Entities\Account.cs" />
+    <Compile Include="Entities\ClientModel.cs" />
+    <Compile Include="Entities\EnterpriseModel.cs" />
+    <Compile Include="Entities\TransactionModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Account\" />
   </ItemGroup>
 
 </Project>

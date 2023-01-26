@@ -1,5 +1,4 @@
-﻿using Baas.Domain.Repositories.Models;
-using System;
+﻿using System;
 
 namespace Baas.Domain.Account.Create
 {
@@ -7,7 +6,7 @@ namespace Baas.Domain.Account.Create
     {
         public string Number { get; set; }
 
-        public static InsertAccountResponse MappingFromModel(AccountModel criacaoContaResponse)
+        public static InsertAccountResponse MappingFromModel(Entities.Account criacaoContaResponse)
         {
             throw new NotImplementedException();
         }

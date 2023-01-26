@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Repositories.Models
+﻿namespace Baas.Domain.Entities
 {
     public class EnterpriseModel
     {

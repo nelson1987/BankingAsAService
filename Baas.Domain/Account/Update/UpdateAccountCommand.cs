@@ -1,6 +1,8 @@
-﻿namespace Baas.Domain.Repositories.Models
+﻿using MediatR;
+
+namespace Baas.Domain.Account.Update
 {
-    public class AccountModel
+    public class UpdateAccountCommand : IRequest<UpdateAccountResponse>
     {
         public int Id { get; set; }
         public string Numero { get; set; }
