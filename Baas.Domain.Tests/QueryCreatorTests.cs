@@ -8,7 +8,7 @@ namespace Baas.Domain.Tests
         [SetUp]
         public void Setup()
         {
-
+            // Method intentionally left empty.
         }
         [Test]
         public void SelectAll()

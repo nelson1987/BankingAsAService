@@ -33,13 +33,10 @@ namespace Baas.Api
                 //options.Filters.Add<InactivedEndpointAttribute>();
             });
 
-            var assembly = AppDomain.CurrentDomain.Load("Baas.Domain");
-            services.AddMediatR(assembly);
+            services.AddMediatR(AppDomain.CurrentDomain.Load("Baas.Domain"));
             services.AddMediatR(Assembly.GetExecutingAssembly());
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Baas.Api", Version = "v1" });
-            });
+            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "Baas.Api", Version = "v1" }));
+
             services.AddScoped<DbSession>();
             //services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();

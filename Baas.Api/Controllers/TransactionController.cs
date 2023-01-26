@@ -2,7 +2,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace Baas.Api.Controllers
 {
@@ -22,8 +24,19 @@ namespace Baas.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(string), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+        [SwaggerOperation(
+        Summary = "Get a value by ID",
+        Description = "Retrieves a value by its ID",
+        OperationId = "GetValueById",
+        Tags = new[] { "Values" }
+    )]
         public async Task<IActionResult> GetStatement()
         {
+            var nome1 = "nelson";
+            var nome2 = "Laurides";
+            var verificacao = nome1 == nome2;
             //var response = await _mediator.Send(new AccountQuery() {
             //     IdCliente = idCliente,
             //     IdEmpresa = idEmpresa,
@@ -34,6 +47,14 @@ namespace Baas.Api.Controllers
         }
 
         [HttpPost]//("Credit")]
+        [ProducesResponseType(typeof(string), 200)]
+        [ProducesResponseType(typeof(string), 400)]
+        [SwaggerOperation(
+        Summary = "Create a new value",
+        Description = "Creates a new value",
+        OperationId = "CreateValue",
+        Tags = new[] { "Values" }
+    )]
         public async Task<IActionResult> Create([FromBody] GetTransactionQuery model)
         {
             var response = await _mediator.Send(model);

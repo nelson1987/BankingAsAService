@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Api", "Baas.Api\Baas.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Domain", "Baas.Domain\Baas.Domain.csproj", "{E97AFA43-B3C4-4E81-AFBE-A519904388FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baas.Domain.Tests", "Baas.Domain.Tests\Baas.Domain.Tests.csproj", "{36881F9C-B089-4260-8708-373DE51D9223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Domain.Tests", "Baas.Domain.Tests\Baas.Domain.Tests.csproj", "{36881F9C-B089-4260-8708-373DE51D9223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baas.Infra", "Baas.Infra\Baas.Infra.csproj", "{A8B56746-C74A-47D3-9E2A-A013971C6AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Infra", "Baas.Infra\Baas.Infra.csproj", "{A8B56746-C74A-47D3-9E2A-A013971C6AEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9136923B-7BE6-4D0D-95D2-6BA2D39F3E39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36881F9C-B089-4260-8708-373DE51D9223} = {9136923B-7BE6-4D0D-95D2-6BA2D39F3E39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25FD40A9-2AE7-46E9-8321-033F753DDD23}

@@ -1,0 +1,8 @@
+DECLARE @filter nvarchar(max) = ''; 
+SELECT @filter = @filter + COLUMN_NAME+' LIKE ''%770%'' OR ' 
+FROM INFORMATION_SCHEMA.COLUMNS  
+WHERE TABLE_NAME = 'TB_TRANSACAO'
+ AND DATA_TYPE IN ('char','nchar','ntext','nvarchar','text','varchar', 'numeric') 
+ SET @filter = left(@filter,len(@filter)-3)
+PRINT @filter
+SELECT * FROM TB_TRANSACAO WHERE VLR_TRANSACAO LIKE '%770%' OR BANCO_CONTRAPARTE LIKE '%770%' OR AGENCIA_CONTRAPARTE LIKE '%770%' OR CONTA_CONTRAPARTE LIKE '%770%' OR DOCUMENTO_CONTRAPARTE LIKE '%770%'

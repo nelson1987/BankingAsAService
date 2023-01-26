@@ -51,21 +51,21 @@ namespace Baas.Infra.Repositories
 
         private static string QuerySelect()
         {
-            var nomeTabela = "TB_TRANSACAO";
-            var creator = new QueryCreator(nomeTabela);
-            return creator.GetQuery();
-            //return @"Select 
-            //            [IDT_TRANSACTION] as Id
-            //            ,[IDT_CONTA] as IdConta
-            //            ,[DTA_TRANSACAO] as Transacao
-            //            ,[VLR_TRANSACAO] as Valor
-            //            ,[DTA_AGENDAMENTO]
-            //            ,[BANCO_CONTRAPARTE] as BancoContraParte
-            //            ,[AGENCIA_CONTRAPARTE] as AgenciaContraParte
-            //            ,[CONTA_CONTRAPARTE] as ContaContraParte
-            //            ,[DOCUMENTO_CONTRAPARTE] as DocumentoContraParte
-            //        FROM [DB_BAAS].[dbo].[TB_TRANSACAO]
-            //        WHERE IDT_CONTA = @Conta";
+            //var nomeTabela = "TB_TRANSACAO";
+            //var creator = new QueryCreator(nomeTabela);
+            //return creator.GetQuery();
+            return @"Select 
+                        [IDT_TRANSACTION] as Id
+                        ,[IDT_CONTA] as IdConta
+                        ,[DTA_TRANSACAO] as Transacao
+                        ,[VLR_TRANSACAO] as Valor
+                        ,[DTA_AGENDAMENTO]
+                        ,[BANCO_CONTRAPARTE] as BancoContraParte
+                        ,[AGENCIA_CONTRAPARTE] as AgenciaContraParte
+                        ,[CONTA_CONTRAPARTE] as ContaContraParte
+                        ,[DOCUMENTO_CONTRAPARTE] as DocumentoContraParte
+                    FROM [DB_BAAS].[dbo].[TB_TRANSACAO]
+                    WHERE IDT_CONTA = @Conta";
         }
     }
 }

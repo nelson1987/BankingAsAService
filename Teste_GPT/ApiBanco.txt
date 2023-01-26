@@ -1,0 +1,95 @@
+Criar um código em c# que conecta com a API do banco Itau, para listar todas as movimentações da minha conta bancária
+Aqui está um exemplo de código em C# que mostra como conectar-se à API do banco Itau para listar todas as movimentações de uma conta bancária específica:
+
+Copy code
+using System;
+using System.Net.Http;
+using Newtonsoft.Json;
+
+class Program {
+    static void Main(string[] args) {
+        // Substitua as variáveis "clientId" e "clientSecret" pelas suas próprias credenciais de aplicativo
+        string clientId = "SEU_CLIENT_ID";
+        string clientSecret = "SEU_CLIENT_SECRET";
+
+        // Substitua "accountId" pelo ID da sua conta bancária
+        string accountId = "SUA_CONTA_BANCARIA_ID";
+
+        // Obtenha o token de acesso
+        string accessToken = GetAccessToken(clientId, clientSecret);
+
+        // Obtenha as movimentações da conta
+        string transactions = GetTransactions(accessToken, accountId);
+
+        // Imprima as movimentações
+        Console.WriteLine(transactions);
+    }
+
+    static string GetAccessToken(string clientId, string clientSecret) {
+        using (var client = new HttpClient()) {
+            // Defina as credenciais do aplicativo
+            client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes(
+                    string.Format("{0}:{1}", clientId, clientSecret))));
+
+            // Defina o tipo de conteúdo
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+            // Envie a solicitação de token de acesso
+            var response = client.PostAsync("https://itau.com.br/api/token", null).Result;
+
+            // Verifique se a solicitação foi bem-sucedida
+            if (response.IsSuccessStatusCode) {
+                // Obtenha o token de acesso
+                var json = response.Content.ReadAsStringAsync().Result;
+                dynamic data = JsonConvert.DeserializeObject(json);
+                return data.access_token;
+            } else {
+                // Exiba o erro
+                Console.WriteLine("Erro ao obter token de acesso: " + response.ReasonPhrase);
+                return null;
+            }
+        }
+    }
+
+    static string GetTransactions(string accessToken, string accountId) {
+        using (var client = new HttpClient()) {
+            // Defina o token de acesso
+            client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
+
+            // Defina o tipo de conteúdo
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers
+
+
+
+Nelson Neto
+concluir resposta
+.MediaTypeWithQualityHeaderValue("application/json"));
+
+Copy code
+        // Envie a solicitação de movimentações da conta
+        var response = client.GetAsync("https://itau.com.br/api/accounts/" + accountId + "/transactions").Result;
+
+        // Verifique se a solicitação foi bem-sucedida
+        if (response.IsSuccessStatusCode) {
+            // Obtenha as movimentações da conta
+            var json = response.Content.ReadAsStringAsync().Result;
+            return json;
+        } else {
+            // Exiba o erro
+            Console.WriteLine("Erro ao obter movimentações da conta: " + response.ReasonPhrase);
+            return null;
+        }
+    }
+}
+}
+
+Copy code
+
+Observe que esse código é apenas um exemplo geral e pode não funcionar sem configurações adicionais. Além disso, verifique se você está de acordo com as políticas e termos de uso da API antes de utilizá-la.
+
+

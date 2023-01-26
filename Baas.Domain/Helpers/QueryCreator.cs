@@ -4,7 +4,7 @@ namespace Baas.Domain.Helpers
 {
     public class QueryCreator
     {
-        private string nomeTabela;
+        private readonly string nomeTabela;
         private string colunas;
         private string filtro;
         private string paginacao;

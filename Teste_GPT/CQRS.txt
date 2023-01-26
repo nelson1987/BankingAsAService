@@ -1,0 +1,174 @@
+Como criar um projeto c#7.0, com o padrão CQRS. Conectando um banco de dados SQLServer no servidor LocalDb para realizar o command, e um banco de dados MongoDb, no servidor localhost para realizar o query e utilizando uma fila no rabbitMq para realizar um evento de sincronização entre os 2 bancos de dados.
+
+Para criar um projeto C# 7.0 com o padrão CQRS, você precisará seguir os seguintes passos:
+
+Crie um novo projeto C# no Visual Studio. Escolha a opção "Aplicativo Console" para este exemplo.
+
+Instale as dependências do projeto:
+
+Para se conectar ao SQLServer LocalDb, você precisará instalar o pacote NuGet "Microsoft.EntityFrameworkCore"
+Para se conectar ao MongoDb, você precisará instalar o pacote NuGet "MongoDB.Driver"
+Para utilizar a fila do RabbitMq, você precisará instalar o pacote NuGet "RabbitMQ.Client"
+Crie uma pasta "Commands" e outra "Queries" no seu projeto para separar os comandos e as consultas.
+
+Crie os modelos de dados para as entidades que serão utilizadas no projeto, tanto para o SQLServer quanto para o MongoDb.
+
+Crie as classes de contexto para o SQLServer LocalDb e para o MongoDb.
+
+Crie as classes de comando para as operações de escrita no SQLServer LocalDb.
+
+Crie as classes de consulta para as operações de leitura no MongoDb.
+
+Utilize a fila do RabbitMq para criar um evento de sincronização entre os dois bancos de dados.
+
+Utilize as classes de comando e consulta nos métodos do seu aplicativo console para testar as operações de escrita e leitura e verificar se o evento de sincronização está funcionando corretamente.
+
+Obs: É importante salientar que esse exemplo é bastante complexo, e para realizar essa tarefa com sucesso, é preciso ter uma boa compreensão de CQRS, arquitetura de banco de dados e conhecimentos avançados em C#.
+
+
+
+
+Nelson Neto
+Conseguiria exemplificar com uma entidade chamada Aluno, contendo um int "Id, um "string" Nome, um string "Matricula", um dateTime "inscricao"
+Claro, aqui está um exemplo de como criar uma entidade Aluno usando CQRS, com conexão ao SQLServer LocalDb e MongoDb e utilizando uma fila no RabbitMq para sincronização:
+
+Crie o modelo de dados para a entidade Aluno no SQLServer LocalDb:
+Copy code
+public class Aluno
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string Matricula { get; set; }
+    public DateTime Inscricao { get; set; }
+}
+Crie o modelo de dados para a entidade Aluno no MongoDb:
+Copy code
+public class Aluno
+{
+    [BsonId]
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string Matricula { get; set; }
+    public DateTime Inscricao { get; set; }
+}
+Observe que no MongoDb, foi utilizado o atributo [BsonId] para definir o campo Id como chave primaria
+
+Crie o contexto do SQLServer LocalDb:
+Copy code
+public class LocalDbContext : DbContext
+{
+    public DbSet<Aluno> Alunos { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AlunoDb;Trusted_Connection=True;");
+    }
+}
+Crie o contexto do MongoDb:
+Copy code
+public class MongoDbContext
+{
+    private readonly IMongoDatabase _database;
+
+    public MongoDbContext()
+    {
+        var client = new MongoClient("mongodb://localhost:27017");
+        _database = client.GetDatabase("AlunoDb");
+    }
+
+    public IMongoCollection<Aluno> Alunos => _database.GetCollection<Aluno>("Alunos");
+}
+Crie as classes de comando para as operações de escrita no SQLServer LocalDb:
+Copy code
+public class CriarAlunoCommand
+{
+    public string Nome { get; set; }
+    public string Matricula { get; set; }
+    public DateTime Inscricao { get; set; }
+}
+
+public class CriarAlunoCommandHandler : IRequestHandler<CriarAlunoCommand>
+{
+    private readonly LocalDbContext _context;
+
+    public CriarAlunoCommandHandler(LocalDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<Unit> Handle(CriarAlunoCommand request, CancellationToken cancellationToken)
+    {
+        var aluno = new Aluno
+        {
+            Nome = request.Nome,
+            Matricula = request.Matricula,
+            Inscricao = request.Inscricao
+        };
+
+        _context.Alunos.Add(aluno);
+        await _context.SaveChangesAsync();
+
+
+
+Nelson Neto
+concluir resposta
+Claro, continuando:
+
+Crie as classes de consulta para as operações de leitura no MongoDb:
+Copy code
+public class ObterAlunoQuery
+{
+    public int Id { get; set; }
+}
+
+public class ObterAlunoQueryHandler : IRequestHandler<ObterAlunoQuery, Aluno>
+{
+    private readonly MongoDbContext _context;
+
+    public ObterAlunoQueryHandler(MongoDbContext context)
+    {
+        _context = context;
+    }
+
+    public Task<Aluno> Handle(ObterAlunoQuery request, CancellationToken cancellationToken)
+    {
+        var aluno = _context.Alunos.Find(x => x.Id == request.Id).FirstOrDefaultAsync();
+        return aluno;
+    }
+}
+Utilize a fila do RabbitMq para criar um evento de sincronização entre os dois bancos de dados:
+Copy code
+public class AlunoCriadoEvent : INotification
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public string Matricula { get; set; }
+    public DateTime Inscricao { get; set; }
+}
+
+public class AlunoCriadoEventHandler : INotificationHandler<AlunoCriadoEvent>
+{
+    private readonly MongoDbContext _context;
+
+    public AlunoCriadoEventHandler(MongoDbContext context)
+    {
+        _context = context;
+    }
+
+    public Task Handle(AlunoCriadoEvent notification, CancellationToken cancellationToken)
+    {
+        var aluno = new Aluno
+        {
+            Id = notification.Id,
+            Nome = notification.Nome,
+            Matricula = notification.Matricula,
+            Inscricao = notification.Inscricao
+        };
+
+        _context.Alunos.InsertOne(aluno);
+        return Task.CompletedTask;
+    }
+}
+Utilize as classes de comando, consulta e evento para as operações CRUD da entidade Aluno. Lembre-se de configurar o MediatR e o RabbitMq no seu projeto, bem como adicionar as dependências do MongoDb e do SQLServer. É importante também fazer a configuração de injeção de dependência para que os contextos e handlers possam ser injetados corretamente em suas classes.
+
+Este é um exemplo básico de como implementar o padrão CQRS usando diferentes bancos de dados e uma fila de eventos para sincronização. É importante notar que existem diversas outras considerações e melhorias que podem ser feitas, como tratamento de erros, validação de dados, etc.

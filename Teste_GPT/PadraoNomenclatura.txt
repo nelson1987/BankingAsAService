@@ -1,0 +1,19 @@
+existe algum padrão de nomenclatura para c#7.0?
+A Microsoft recomenda o seguinte padrão de nomenclatura para o C# 7.0:
+
+Nomes de tipos (classes, structs, enums, interfaces, etc.) devem ser escritos com letras maiúsculas e no singular (ex. "Customer", "Order", "Account").
+Nomes de métodos, propriedades, campos e eventos devem ser escritos com letras minúsculas e no camel case (ex. "getCustomer", "saveChanges", "orderCompleted").
+Nomes de constantes devem ser escritos com letras maiúsculas e no snake case (ex. "PI", "MAX_VALUE").
+Nomes de parâmetros e variáveis locais devem ser escritos com letras minúsculas e no camel case (ex. "firstName", "customerId").
+Esses são apenas alguns exemplos, e essas recomendações podem variar dependendo do contexto ou do projeto. É importante seguir o padrão de nomenclatura estabelecido pela equipe de desenvolvimento ou pelo projeto.
+
+
+
+
+Nelson Neto
+Eu conseguiria fazer a Ide do Visual Studio obrigar meu código a respeitar esses padrões?
+Sim, é possível configurar o Visual Studio para ajudar a garantir que o código segue os padrões de nomenclatura recomendados. Isso pode ser feito usando as ferramentas de análise de código do Visual Studio.
+
+Para fazer isso, vá para "Ferramentas" > "Opções" > "Editor de códigos" > "Análise de código". Aqui, você pode habilitar ou desabilitar vários tipos de análise de código, incluindo "Nomenclatura" e "Estilo de código". Além disso, você pode personalizar as regras de análise de código para atender às suas necessidades específicas.
+
+Além disso, existem extensões de terceiros que você pode instalar no Visual Studio para ajudar a garantir que o código siga os padrões de nomenclatura recomendados, como o "StyleCop" ou o "Microsoft Code Analysis".
