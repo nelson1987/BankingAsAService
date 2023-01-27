@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using Baas.Domain.Account.Update;
+using MediatR;
 
-namespace Baas.Domain.Account.Update
+namespace Baas.Domain.Commands
 {
     public class UpdateAccountCommand : IRequest<UpdateAccountResponse>
     {

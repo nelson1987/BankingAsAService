@@ -1,10 +1,8 @@
-﻿using Baas.Domain.Transaction;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
-using Microsoft.OpenApi.Models;
 
 namespace Baas.Api.Controllers
 {

@@ -1,25 +1,61 @@
-﻿namespace Baas.Domain.Exceptions
+﻿using System;
+using System.Reflection;
+
+namespace Baas.Domain.Exceptions
 {
-    public class HttpDomainException : DomainException
+    //public class HttpDomainException : DomainException
+    //{
+    //    public HttpDomainException(string erro) : base(erro)
+    //    {
+    //    }
+    //}
+
+    //public class DomainException
+    //{
+    //    public string Erro { get; set; }
+
+    //    public DomainException(string erro)
+    //    {
+    //        Erro = erro;
+    //    }
+    //}
+
+    public class ErroPadrao
     {
-        public HttpDomainException(string erro) : base(erro)
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public string Mensagem { get; set; }
+
+        public ErroPadrao(ErroPadraoEnum erroPadrao)
         {
+            var type = erroPadrao.GetType();
+            var member = type.GetMember(erroPadrao.ToString());
+            var attribute = member[0].GetCustomAttribute<ErroPadraoAttribute>();
+            Id = (int)erroPadrao;
+            Descricao = erroPadrao.ToString();
+            Mensagem = attribute.Mensagem;
         }
     }
 
-    public class DomainException
+    public enum ErroPadraoEnum
     {
-        public string Erro { get; set; }
+        [ErroPadrao("Valor inválido")]
+        VALOR_INVALIDO,
 
-        public DomainException(string erro)
-        {
-            Erro = erro;
-        }
+        [ErroPadrao("Nota inválida")]
+        NOTA_INVALIDA,
+
+        [ErroPadrao("Erro de sistema")]
+        ERRO_SISTEMA
     }
 
-    public static class ErroPadrao
+    public class ErroPadraoAttribute : Attribute
     {
-        public static DomainException Teste
-        { get { return new DomainException("Testo do Erro"); } }
+        public string Mensagem { get; set; }
+
+        public ErroPadraoAttribute(string mensagem)
+        {
+            Mensagem = mensagem;
+        }
     }
 }

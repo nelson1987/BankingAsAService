@@ -1,5 +1,8 @@
-﻿using Baas.Domain.Repositories.Contracts;
+﻿using AutoMapper;
+using Baas.Domain.Account.CreatedAccount;
+using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
+using MassTransit;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,13 +11,17 @@ namespace Baas.Domain.Account.Create
 {
     public class CreateAccountHandler : IRequestHandler<InsertAccountCommand, InsertAccountResponse>
     {
+        private readonly IMapper _map;
+        private readonly IPublishEndpoint _publisher;
         private readonly IMediator _mediator;
         private readonly IAccountRepository _accountRepository;
 
-        public CreateAccountHandler(IMediator mediator, IAccountRepository accountRepository)
+        public CreateAccountHandler(IMediator mediator, IAccountRepository accountRepository, IPublishEndpoint publisher, IMapper map)
         {
             _accountRepository = accountRepository;
             _mediator = mediator;
+            _publisher = publisher;
+            _map = map;
         }
 
         public async Task<InsertAccountResponse> Handle(InsertAccountCommand command, CancellationToken cancellationToken)
@@ -27,8 +34,8 @@ namespace Baas.Domain.Account.Create
             //Publicar();
 
             //Incluir na fila para sincronizar com banco no-sql
-            await _mediator.Send(criacaoContaResponse);
-            return InsertAccountResponse.MappingFromModel(criacaoContaResponse);
+            await _publisher.Publish<CreatedAccountEvent>(_map.Map<CreatedAccountEvent>(criacaoContaResponse));
+            return _map.Map<InsertAccountResponse>(criacaoContaResponse);
         }
 
         //private async Task<AccountModel> ValidarSeExiste(CreateAccountCommand request)

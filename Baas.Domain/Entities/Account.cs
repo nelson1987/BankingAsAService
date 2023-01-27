@@ -1,5 +1,4 @@
 ﻿using Baas.Domain.Repositories.DTOs;
-using System;
 
 namespace Baas.Domain.Entities
 {

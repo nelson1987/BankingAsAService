@@ -19,7 +19,12 @@ namespace Baas.Infra.Repositories
             _dbSession = dbSession;
         }
 
-        public async Task<Account> CreateAccount(AccountDTO dto)
+        public Task<Account> Delete(AccountDTO conta)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task<Account> Insert(AccountDTO dto)
         {
             using (var conn = _dbSession.Connection)
             {
@@ -37,16 +42,6 @@ namespace Baas.Infra.Repositories
             }
             return Account.MappingFromDTO(dto);
             //var clientes = await db.QueryAsync<Cliente>(query);
-        }
-
-        public Task<Account> Delete(AccountDTO conta)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<Account> Insert(AccountDTO conta)
-        {
-            throw new System.NotImplementedException();
         }
 
         public Task<Account> Update(AccountDTO conta)

@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Baas.Domain.Commands;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
+using System.Threading.Tasks;
 
 namespace Baas.Api.Controllers
 {
@@ -11,44 +14,54 @@ namespace Baas.Api.Controllers
     [Consumes("application/json")]
     public class ValuesController : ControllerBase
     {
-        [HttpGet]
-        [ProducesResponseType(typeof(string), 200)]
-        [ProducesResponseType(typeof(string), 400)]
-        [SwaggerOperation(
-        Summary = "Get a value by ID",
-        Description = "Retrieves a value by its ID",
-        OperationId = "GetValueById",
-        Tags = new[] { "Values" }
-    )]
-        public IActionResult Get(int id)
-        {
-            if (id <= 0)
-            {
-                return BadRequest("ID must be greater than 0");
-            }
+        private readonly IMediator _mediator;
+        private readonly ILogger<ValuesController> _logger;
+        // private readonly RabbitMQManager _rabbitMQ;
 
-            return Ok($"Value {id}");
+        public ValuesController(IMediator mediator, ILogger<ValuesController> logger)//, RabbitMQManager rabbitMQ)
+        {
+            this._mediator = mediator;
+            _logger = logger;
+            //_rabbitMQ = new RabbitMQManager();
+            //_rabbitMQ.Consume("Account", OnReceive);
         }
 
-        //[HttpPost("create")]
-        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateModel))]
-        //[ProducesResponseType(typeof(string), 400)]
-        //[SwaggerOperation(
-        //    Summary = "Create a new value",
-        //    Description = "Creates a new value",
-        //    OperationId = "CreateValue",
-        //    Tags = new[] { "Values" }
-        //)]
-        //public IActionResult Create([FromBody, ApiExplorerSettings(OpenApiExample Example = @"{'name':'John','age':30}")] string value)
+        //private void OnReceive(string message)
         //{
-        //    if (string.IsNullOrWhiteSpace(value))
-        //    {
-        //        return BadRequest("Value cannot be empty");
-        //    }
-
-        //    return Ok($"Value '{value}' created");
+        //    //processa a mensagem aqui
         //}
-
+        /*
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MovimentacaoQueryResponse))]
+        [ProducesResponseType(typeof(string), 400)]
+        [SwaggerOperation(
+            Summary = "Buscar Movimentações por Id",
+            Description = "Retrieves a value by its ID",
+            OperationId = "GetValueById",
+            Tags = new[] { "Movimentacao" }
+        )]
+        public async Task<IActionResult> Get([FromQuery] MovimentacaoQuery query)
+        {
+            _logger.LogInformation("MovimentacaoQuery");
+            var retorno = await _mediator.Send(query);
+            return Ok(retorno);
+        }
+        */
+        [HttpPost("create")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AberturaContaCommand))]
+        [ProducesResponseType(typeof(string), 400)]
+        [SwaggerOperation(
+            Summary = "Create a new value",
+            Description = "Creates a new value",
+            OperationId = "CreateValue",
+            Tags = new[] { "Values" }
+        )]
+        public async Task<IActionResult> Create([FromBody] AberturaContaCommand command)
+        {
+            var retorno = await _mediator.Send(command);
+            return Ok(retorno);
+        }
+        /*
         [HttpPut("{id}")]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(string), 200)]
@@ -91,5 +104,6 @@ namespace Baas.Api.Controllers
 
             return Ok($"Value {id} deleted");
         }
+        */
     }
 }

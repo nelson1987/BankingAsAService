@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Compile Remove="Repositories\ClientRepository.cs" />
+    <Compile Remove="Repositories\CreatedAccountEventRepository.cs" />
     <Compile Remove="Repositories\EnterpriseRepository.cs" />
     <Compile Remove="Repositories\TransactionRepository.cs" />
   </ItemGroup>

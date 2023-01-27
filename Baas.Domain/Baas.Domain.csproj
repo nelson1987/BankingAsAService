@@ -5,56 +5,80 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Account\**" />
     <Compile Remove="Entities\**" />
     <Compile Remove="Exceptions\**" />
     <Compile Remove="Helpers\**" />
     <Compile Remove="Repositories\DTOs\**" />
-    <Compile Remove="Transaction\**" />
-    <EmbeddedResource Remove="Account\**" />
     <EmbeddedResource Remove="Entities\**" />
     <EmbeddedResource Remove="Exceptions\**" />
     <EmbeddedResource Remove="Helpers\**" />
     <EmbeddedResource Remove="Repositories\DTOs\**" />
-    <EmbeddedResource Remove="Transaction\**" />
-    <None Remove="Account\**" />
     <None Remove="Entities\**" />
     <None Remove="Exceptions\**" />
     <None Remove="Helpers\**" />
     <None Remove="Repositories\DTOs\**" />
-    <None Remove="Transaction\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\CreditTransactionCommand.cs" />
+    <Compile Remove="Commands\DebitTransactionCommand.cs" />
+    <Compile Remove="Commands\DeleteAccountCommand.cs" />
+    <Compile Remove="Commands\IncluirMovimentacaoCommand.cs" />
+    <Compile Remove="Commands\InsertAccountCommand.cs" />
+    <Compile Remove="Commands\UpdateAccountCommand.cs" />
+    <Compile Remove="Events\CreatedAccountEvent.cs" />
+    <Compile Remove="Events\CreditTransactionEvent.cs" />
+    <Compile Remove="Events\DebitTransactionEvent.cs" />
+    <Compile Remove="Events\Events.cs" />
+    <Compile Remove="Events\GetTransactionQueryEvent.cs" />
+    <Compile Remove="Events\MovimentacaoIncluidaEvent.cs" />
+    <Compile Remove="Handlers\AccountQueryHandler.cs" />
+    <Compile Remove="Handlers\CreateAccountEventHandler.cs" />
+    <Compile Remove="Handlers\CreateAccountHandler.cs" />
+    <Compile Remove="Handlers\CreditTransactionHandler.cs" />
+    <Compile Remove="Handlers\DebitTransactionHandler.cs" />
+    <Compile Remove="Handlers\DeleteAccountHandler.cs" />
+    <Compile Remove="Handlers\GetTransactionQueryHandler.cs" />
+    <Compile Remove="Handlers\UpdateAccountHandler.cs" />
+    <Compile Remove="Queries\AccountQuery.cs" />
+    <Compile Remove="Queries\GetTransactionQuery.cs" />
+    <Compile Remove="Queries\MovimentacaoQuery.cs" />
+    <Compile Remove="Repositories\Contracts\ICreatedAccountEventRepository.cs" />
     <Compile Remove="Repositories\Contracts\ITransactionRepository.cs" />
+    <Compile Remove="Responses\AccountQueryResponse.cs" />
+    <Compile Remove="Responses\CreditTransactionResponse.cs" />
+    <Compile Remove="Responses\DebitTransactionResponse.cs" />
+    <Compile Remove="Responses\DeleteAccountResponse.cs" />
+    <Compile Remove="Responses\GetTransactionQueryResponse.cs" />
+    <Compile Remove="Responses\IncluirMovimentacaoResponse.cs" />
+    <Compile Remove="Responses\InsertAccountResponse.cs" />
+    <Compile Remove="Responses\MovimentacaoQueryResponse.cs" />
+    <Compile Remove="Responses\UpdateAccountResponse.cs" />
+    <Compile Remove="Validators\IncluirMovimentacaoCommandValidator.cs" />
+    <Compile Remove="Validators\MovimentacaoValidator.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Account\CreatedEvent\CreateAccountEventHandler.cs" />
-    <Compile Include="Account\Create\CreateAccountHandler.cs" />
-    <Compile Include="Account\CreatedEvent\CreatedAccountEvent.cs" />
-    <Compile Include="Account\Create\InsertAccountCommand.cs" />
-    <Compile Include="Account\Create\InsertAccountResponse.cs" />
-    <Compile Include="Account\Delete\DeleteAccountCommand.cs" />
-    <Compile Include="Account\Delete\DeleteAccountHandler.cs" />
-    <Compile Include="Account\Delete\DeleteAccountResponse.cs" />
-    <Compile Include="Account\Select\AccountQuery.cs" />
-    <Compile Include="Account\Select\AccountQueryHandler.cs" />
-    <Compile Include="Account\Select\AccountQueryResponse.cs" />
-    <Compile Include="Account\Update\UpdateAccountCommand.cs" />
-    <Compile Include="Account\Update\UpdateAccountHandler.cs" />
-    <Compile Include="Account\Update\UpdateAccountResponse.cs" />
+    <Compile Include="Entities\Conta.cs" />
+    <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Repositories\DTOs\AccountDTO.cs" />
     <Compile Include="Entities\Account.cs" />
-    <Compile Include="Entities\ClientModel.cs" />
-    <Compile Include="Entities\EnterpriseModel.cs" />
-    <Compile Include="Entities\TransactionModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+    <PackageReference Include="MassTransit" Version="8.0.12" />
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>

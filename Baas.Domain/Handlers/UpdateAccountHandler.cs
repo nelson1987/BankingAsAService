@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Baas.Domain.Commands;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 

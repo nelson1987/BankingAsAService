@@ -53,9 +53,4 @@ namespace Baas.Api.Controllers
         }
         */
     }
-
-    public class EnterpriseModel
-    {
-        public int Id { get; set; }
-    }
 }

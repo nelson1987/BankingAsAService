@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Account.Delete
+namespace Baas.Domain.Commands
 {
     public class DeleteAccountCommand : IRequest<DeleteAccountResponse>
     {

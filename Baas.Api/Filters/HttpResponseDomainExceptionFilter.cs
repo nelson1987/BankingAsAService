@@ -43,6 +43,14 @@ namespace Baas.Api.Filters
 
                 context.ExceptionHandled = true;
             }
+            if (context.Exception is not null)
+            {
+                context.Result = new ObjectResult(context.Exception.Message)
+                {
+                    StatusCode = 412
+                };
+                context.ExceptionHandled = true;
+            }
         }
     }
 
@@ -63,6 +71,14 @@ namespace Baas.Api.Filters
                     StatusCode = httpResponseException.StatusCode
                 };
 
+                context.ExceptionHandled = true;
+            }
+            if (context.Exception is Exception)
+            {
+                context.Result = new ObjectResult(context.Exception.Message)
+                {
+                    StatusCode = 412
+                };
                 context.ExceptionHandled = true;
             }
         }
