@@ -13,17 +13,17 @@ namespace Baas.Domain.Entities
 {
     public class AberturaContaCommandHandler : IRequestHandler<AberturaContaCommand, AberturaContaResponse>
     {
-        private readonly IAccountRepository _contaRepository;
-        private readonly IMapper _mapper;
         private readonly ILogger<AberturaContaCommandHandler> _logger;
-        private readonly IPublishEndpoint _bus;
+        private readonly IMapper _mapper;
+        private readonly IBus _bus;
+        private readonly IAccountRepository _contaRepository;
 
-        public AberturaContaCommandHandler(IAccountRepository contaRepository, IMapper mapper, ILogger<AberturaContaCommandHandler> logger, IPublishEndpoint bus)
+        public AberturaContaCommandHandler(ILogger<AberturaContaCommandHandler> logger, IMapper mapper, IBus bus, IAccountRepository contaRepository)
         {
-            _contaRepository = contaRepository;
-            _mapper = mapper;
             _logger = logger;
+            _mapper = mapper;
             _bus = bus;
+            _contaRepository = contaRepository;
         }
 
         public async Task<AberturaContaResponse> Handle(AberturaContaCommand request, CancellationToken cancellationToken)
@@ -42,8 +42,7 @@ namespace Baas.Domain.Entities
                 _logger.LogInformation("Conta {Numero} aberta com sucesso.", conta.Numero);
                 try
                 {
-                    await _bus.Publish(_mapper.Map<ContaAbertaEvent>(conta));
-                    //await _bus.Publish(_mapper.Map<ContaAbertaEvent>(conta));
+                    await _bus.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
                     _logger.LogInformation("Evento de conta aberta publicado com sucesso");
                 }
                 catch (Exception ex)

@@ -33,7 +33,6 @@
     <Compile Remove="Events\GetTransactionQueryEvent.cs" />
     <Compile Remove="Events\MovimentacaoIncluidaEvent.cs" />
     <Compile Remove="Handlers\AccountQueryHandler.cs" />
-    <Compile Remove="Handlers\CreateAccountEventHandler.cs" />
     <Compile Remove="Handlers\CreateAccountHandler.cs" />
     <Compile Remove="Handlers\CreditTransactionHandler.cs" />
     <Compile Remove="Handlers\DebitTransactionHandler.cs" />
@@ -61,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Entities\Conta.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Repositories\DTOs\AccountDTO.cs" />
     <Compile Include="Entities\Account.cs" />
   </ItemGroup>
@@ -72,12 +72,12 @@
     <PackageReference Include="MediatR" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
 
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Queries\" />
   </ItemGroup>
 

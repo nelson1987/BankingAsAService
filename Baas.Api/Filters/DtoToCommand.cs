@@ -16,13 +16,14 @@ namespace Baas.Api.Filters
             .ForMember(x => x.Id, y => y.Ignore())
             .ForMember(x => x.Numero, y => y.Ignore());
             CreateMap<AccountDTO, ContaAbertaEvent>();
+            CreateMap<AccountDTO, AberturaContaResponse>();
             //CreateMap<AccountDTO, AccountQuery>();
 
-//            Missing type map configuration or unsupported mapping.
+            //            Missing type map configuration or unsupported mapping.
 
-//Mapping types:
-//AberturaContaCommand->AccountDTO
-//Baas.Domain.Commands.AberturaContaCommand->Baas.Domain.Repositories.DTOs.AccountDTO
+            //Mapping types:
+            //AberturaContaCommand->AccountDTO
+            //Baas.Domain.Commands.AberturaContaCommand->Baas.Domain.Repositories.DTOs.AccountDTO
         }
     }
     public class ModelToResponse : Profile

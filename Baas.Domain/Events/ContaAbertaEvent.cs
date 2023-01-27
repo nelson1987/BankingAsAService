@@ -1,4 +1,8 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
+using Microsoft.Extensions.Hosting;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Baas.Domain.Entities
 {
@@ -70,7 +74,27 @@ namespace Baas.Domain.Entities
         }
     }
     */
+    public class ContaAbertaEventService :
+        BackgroundService
+    {
+        readonly IBus _bus;
 
+        public ContaAbertaEventService(IBus bus)
+        {
+            _bus = bus;
+        }
+
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+        {
+            while (!stoppingToken.IsCancellationRequested)
+            {
+                _bus.Address = "Conta-Aberta-Event";
+                await _bus.Publish(new ContaAbertaEvent { Numero = "World" }, stoppingToken);
+                await Task.Delay(1000, stoppingToken);
+
+            }
+        }
+    }
     public class ContaAbertaEvent : INotification
     {
         public int Id { get; set; }
