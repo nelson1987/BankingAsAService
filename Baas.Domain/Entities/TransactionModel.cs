@@ -2,7 +2,7 @@
 
 namespace Baas.Domain.Entities
 {
-    public class TransactionModel
+    public class Transaction
     {
         public int Id { get; set; }
         public int IdConta { get; set; }

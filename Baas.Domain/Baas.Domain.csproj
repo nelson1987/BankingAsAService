@@ -27,7 +27,6 @@
   <ItemGroup>
     <Compile Include="Entities\CartaoCredito.cs" />
     <Compile Include="Entities\Cliente.cs" />
-    <Compile Include="Entities\ClientModel.cs" />
     <Compile Include="Entities\Conta.cs" />
     <Compile Include="Entities\ContaCorrente.cs" />
     <Compile Include="Entities\Emprestimo.cs" />

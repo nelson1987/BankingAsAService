@@ -17,6 +17,7 @@ namespace Baas.Domain.Entities
         {
             Saldo -= valor;
         }
+
         public double CalcularRendimento()
         {
             return Convert.ToDouble(Saldo) * TaxaDeRendimento;

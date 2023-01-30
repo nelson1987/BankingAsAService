@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Commands
 {
     public class CalcularRendimentoInvestimentoCommand : IRequest<CalcularRendimentoInvestimentoCommandResponse>
     {

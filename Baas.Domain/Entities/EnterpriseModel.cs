@@ -1,6 +1,6 @@
 ﻿namespace Baas.Domain.Entities
 {
-    public class EnterpriseModel
+    public class Enterprise
     {
         public int Id { get; set; }
         public string Nome { get; set; }
