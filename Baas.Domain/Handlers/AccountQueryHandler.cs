@@ -1,10 +1,11 @@
-﻿using Baas.Domain.Repositories.Contracts;
+﻿using Baas.Domain.Account.Create;
+using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Account.Create
+namespace Baas.Domain.Handlers
 {
     public class AccountQueryHandler : IRequestHandler<AccountQuery, AccountQueryResponse>
     {

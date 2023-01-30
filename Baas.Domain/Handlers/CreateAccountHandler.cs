@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Baas.Domain.Account.Create;
 using Baas.Domain.Account.CreatedAccount;
 using Baas.Domain.Commands;
 using Baas.Domain.Repositories.Contracts;
@@ -8,7 +9,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Account.Create
+namespace Baas.Domain.Handlers
 {
     public class CreateAccountHandler : IRequestHandler<InsertAccountCommand, InsertAccountResponse>
     {

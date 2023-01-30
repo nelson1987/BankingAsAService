@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Account.CreatedAccount
+namespace Baas.Domain.Handlers
 {
     public class CreateAccountEventHandler : INotificationHandler<ContaAbertaEvent>
     {

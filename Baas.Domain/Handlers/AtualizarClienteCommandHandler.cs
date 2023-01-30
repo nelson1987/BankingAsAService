@@ -1,8 +1,10 @@
-﻿using MediatR;
+﻿using Baas.Domain.Commands;
+using Baas.Domain.Entities;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Handlers
 {
     public class AtualizarClienteCommandHandler : IRequestHandler<AtualizarClienteCommand>
     {

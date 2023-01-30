@@ -1,8 +1,10 @@
-﻿using MediatR;
+﻿using Baas.Domain.Account.Delete;
+using Baas.Domain.Commands;
+using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Account.Delete
+namespace Baas.Domain.Handlers
 {
     public class DeleteAccountHandler : IRequestHandler<DeleteAccountCommand, DeleteAccountResponse>
     {

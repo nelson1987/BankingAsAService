@@ -1,4 +1,5 @@
 ﻿using Baas.Domain.Repositories.Contracts;
+using Baas.Domain.Transaction;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Transaction
+namespace Baas.Domain.Handlers
 {
     public class GetTransactionQueryHandler : IRequestHandler<GetTransactionQuery, IEnumerable<GetTransactionQueryResponse>>
     {
@@ -22,7 +23,7 @@ namespace Baas.Domain.Transaction
         public async Task<IEnumerable<GetTransactionQueryResponse>> Handle(GetTransactionQuery request, CancellationToken cancellationToken)
         {
             var listagem = await _transactionRepository.GetAccountByNumber(TransactionDTO.MappingFromModel(request));
-            var grid = GridResponse<TransactionModel>.Get(listagem, "1", 3);
+            var grid = GridResponse<Transaction>.Get(listagem, "1", 3);
             return grid
                     .Select(x => GetTransactionQueryResponse.MappingFromModel(x));
         }

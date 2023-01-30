@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Baas.Domain.Commands;
+using Baas.Domain.Entities;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using MassTransit;
@@ -9,7 +10,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Handlers
 {
     public class AberturaContaCommandHandler : IRequestHandler<AberturaContaCommand, AberturaContaCommandResponse>
     {

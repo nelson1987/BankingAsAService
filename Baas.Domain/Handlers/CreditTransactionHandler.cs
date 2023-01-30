@@ -1,10 +1,12 @@
-﻿using MediatR;
+﻿using Baas.Domain.Commands;
+using Baas.Domain.Tramsaction.Credit;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Tramsaction.Credit
+namespace Baas.Domain.Handlers
 {
     public class CreditTransactionHandler : IRequestHandler<CreditTransactionCommand, CreditTransactionResponse>
     {
