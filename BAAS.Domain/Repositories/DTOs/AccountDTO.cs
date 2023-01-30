@@ -24,7 +24,11 @@ namespace Baas.Domain.Repositories.DTOs
 
         internal static AccountDTO MappingFromModel(AccountQuery request)
         {
-            throw new NotImplementedException();
+            return new AccountDTO()
+            {
+                IdCliente = request.IdCliente,
+                Tipo = request.Tipo
+            };
         }
 
         internal static AccountDTO MappingFromModel(InsertAccountCommand command)

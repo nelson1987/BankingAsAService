@@ -21,7 +21,7 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-        /*
+
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         public async Task<IActionResult> GetAccount(string numero, int idCliente)
         {
@@ -32,7 +32,7 @@ namespace Baas.Api.Controllers
             });
             return Ok(response);
         }
-        */
+
         [HttpPost]
         public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand model)
         {
