@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Baas.Domain.Account.CreatedAccount;
+using Baas.Domain.Commands;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using MassTransit;

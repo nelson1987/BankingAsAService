@@ -1,7 +1,5 @@
-﻿using Baas.Domain.Helpers;
-using Baas.Domain.Repositories.Contracts;
+﻿using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
-using Baas.Domain.Repositories.Models;
 using Baas.Infra.DbContext;
 using Dapper;
 using Microsoft.Extensions.Logging;
@@ -21,7 +19,7 @@ namespace Baas.Infra.Repositories
             _dbSession = dbSession;
         }
 
-        public async Task<TransactionModel> CreateAccount(TransactionDTO conta)
+        public async Task<Transaction> CreateAccount(TransactionDTO conta)
         {
             using (var conn = _dbSession.Connection)
             {
@@ -37,7 +35,7 @@ namespace Baas.Infra.Repositories
             throw new System.Exception();
         }
 
-        public async Task<IEnumerable<TransactionModel>> GetAccountByNumber(TransactionDTO conta)
+        public async Task<IEnumerable<Transaction>> GetAccountByNumber(TransactionDTO conta)
         {
 
 

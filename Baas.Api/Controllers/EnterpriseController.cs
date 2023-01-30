@@ -1,4 +1,5 @@
 ﻿using Baas.Domain.Account.Create;
+using Baas.Domain.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,14 +47,14 @@ namespace Baas.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateEnterprise([FromBody] EnterpriseModel empresa)
+        public async Task<IActionResult> CreateEnterprise([FromBody] InsertAccountCommand empresa)
         {
-            var result = await _mediator.Send(new InsertAccountCommand());
+            var result = await _mediator.Send(empresa);
             return CreatedAtAction(nameof(GetEnterprise), new { id = empresa.Id }, empresa);
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteEnterprise([FromBody] EnterpriseModel empresa)
+        public async Task<IActionResult> DeleteEnterprise([FromBody] DeleteAccountCommand empresa)
         {
             return Ok();
         }

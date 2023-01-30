@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -40,6 +40,9 @@
     <Compile Include="Helpers\QueryCreator.cs" />
     <Compile Include="Repositories\DTOs\AccountDTO.cs" />
     <Compile Include="Entities\Account.cs" />
+    <Compile Include="Repositories\DTOs\ClientDTO.cs" />
+    <Compile Include="Repositories\DTOs\EnterpriseDTO.cs" />
+    <Compile Include="Repositories\DTOs\TransactionDTO.cs" />
   </ItemGroup>
 
   <ItemGroup>

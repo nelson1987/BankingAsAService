@@ -9,10 +9,6 @@ namespace Baas.Domain.Repositories.DTOs
         public string SortingType => "DESC";
         public string SearchFilter => "895";
 
-
-
-
-
         public int Conta { get; set; }
         public static TransactionDTO MappingFromModel(GetTransactionQuery request)
         {

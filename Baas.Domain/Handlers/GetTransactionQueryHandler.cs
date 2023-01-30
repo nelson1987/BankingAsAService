@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Baas.Domain.Repositories.Contracts;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;

@@ -14,7 +14,7 @@ namespace Baas.Domain.Transaction
         public string ContaContraParte { get; set; }
         public string DocumentoContraParte { get; set; }
 
-        public static GetTransactionQueryResponse MappingFromModel(TransactionModel model)
+        public static GetTransactionQueryResponse MappingFromModel(Transaction model)
         {
             return new GetTransactionQueryResponse()
             {

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using Baas.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace Baas.Domain.Repositories.Contracts
 {
