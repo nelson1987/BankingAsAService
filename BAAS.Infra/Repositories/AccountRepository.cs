@@ -19,9 +19,14 @@ namespace Baas.Infra.Repositories
             _dbSession = dbSession;
         }
 
-        public Task<Account> Delete(AccountDTO conta)
+        public async Task Delete(AccountDTO dto)
         {
-            throw new System.NotImplementedException();
+            using (var conn = _dbSession.Connection)
+            {
+                var query = @"DELETE TB_CONTA
+                            WHERE NUM_CONTA = @NUMERO;";
+                await conn.ExecuteAsync(sql: query, new { numero = dto.Numero });
+            }
         }
 
         public async Task<Account> Insert(AccountDTO dto)
@@ -34,14 +39,10 @@ namespace Baas.Infra.Repositories
                                         ,IDT_CLIENTE)
                             VALUES(@NUMERO
                                         ,@TIPO
-                                        ,@CLIENTE)";
-                // connection.Query<Product>(@"SELECT * FROM Products WHERE ProductID = @ID", new { id = 2 });
-                //List<Tarefa> tarefas = (
+                                        ,@CLIENTE);";
                 await conn.ExecuteAsync(sql: query, new { numero = dto.Numero, tipo = dto.Tipo, cliente = dto.IdCliente });
-                //).ToList();
             }
             return Account.MappingFromDTO(dto);
-            //var clientes = await db.QueryAsync<Cliente>(query);
         }
 
         public Task<Account> Update(AccountDTO conta)

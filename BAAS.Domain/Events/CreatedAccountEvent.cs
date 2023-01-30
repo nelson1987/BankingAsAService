@@ -1,12 +1,20 @@
-﻿using MediatR;
+﻿using BAAS.Domain.Produces;
 
 namespace Baas.Domain.Events
 {
-    public interface ICreatedAccountEvent : INotification
-    {
-    }
+    //public class CreatedAccountEvent : ICreatedAccountEvent
+    //{
+    //    public void Init(IEvent<CreatedAccountEvent> message)
+    //    {
 
-    public class CreatedAccountEvent : ICreatedAccountEvent
+    //    }
+    //}
+    //public interface ICreatedAccountEvent : IProduceMessage<CreatedAccountEvent>
+    //{
+
+    //}
+
+    public class CreatedAccountEvent 
     {
         public int Id { get; set; }
         public string Numero { get; set; }

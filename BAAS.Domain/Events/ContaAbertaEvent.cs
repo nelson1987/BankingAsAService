@@ -1,8 +1,4 @@
-﻿using MassTransit;
-using MediatR;
-using Microsoft.Extensions.Hosting;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Baas.Domain.Events
 {
@@ -74,76 +70,37 @@ namespace Baas.Domain.Events
         }
     }
     */
-    public class ContaAbertaEventService :
-        BackgroundService
+    //public class ContaAbertaEventService :
+    //    BackgroundService
+    //{
+    //    readonly IBus _bus;
+
+    //    public ContaAbertaEventService(IBus bus)
+    //    {
+    //        _bus = bus;
+    //    }
+
+    //    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    //    {
+    //        while (!stoppingToken.IsCancellationRequested)
+    //        {
+    //            //_bus.Address = "Conta-Aberta-Event";
+    //            await _bus.Publish(new ContaAbertaEvent { Numero = "World" }, stoppingToken);
+    //            await Task.Delay(1000, stoppingToken);
+
+    //        }
+    //    }
+    //}
+    public class ContaAbertaEvent : IEvent
     {
-        readonly IBus _bus;
+        public Guid CorrelationId { get { return Guid.NewGuid(); } }
 
-        public ContaAbertaEventService(IBus bus)
-        {
-            _bus = bus;
-        }
+        public string QueueName { get { return "Conta-Aberta-Event"; } }
 
-        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-        {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                //_bus.Address = "Conta-Aberta-Event";
-                await _bus.Publish(new ContaAbertaEvent { Numero = "World" }, stoppingToken);
-                await Task.Delay(1000, stoppingToken);
-
-            }
-        }
-    }
-    public class ContaAbertaEvent : INotification
-    {
         public int Id { get; set; }
         public string Numero { get; set; }
         public string Tipo { get; set; }
         public int IdCliente { get; set; }
         public string Agencia { get; set; }
-        // public static ContaAbertaEvent MappingFromDTO() { }
     }
-
-    //public class ContaRepository : IContaRepository
-    //{
-    //    private readonly ApplicationDbContext _context;
-
-    //    public ContaRepository(ApplicationDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-
-    //    public async Task<Conta> AddAsync(Conta entity)
-    //    {
-    //        await _context.Contas.AddAsync(entity);
-    //        await _context.SaveChangesAsync();
-    //        return entity;
-    //    }
-    //}
-    //public class MovimentacaoRepository : IMovimentacaoRepository
-    //{
-    //    private readonly ApplicationDbContext _context;
-
-    //    public MovimentacaoRepository(ApplicationDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-
-    //    public async Task<Movimentacao> AddAsync(Movimentacao entity)
-    //    {
-    //        await _context.Contas.AddAsync(entity);
-    //        await _context.SaveChangesAsync();
-    //        return entity;
-    //    }
-    //}
-
-    //public interface IContaRepository
-    //{
-    //    Task<Conta> AddAsync(Conta entity);
-    //}
-    //public interface IMovimentacaoRepository
-    //{
-    //    Task<Movimentacao> AddAsync(Movimentacao entity);
-    //}
 }

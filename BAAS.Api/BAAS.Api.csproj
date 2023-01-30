@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BAAS.Domain\BAAS.Domain.csproj" />
+    <ProjectReference Include="..\BAAS.Events\BAAS.Events.csproj" />
     <ProjectReference Include="..\BAAS.Infra\BAAS.Infra.csproj" />
   </ItemGroup>
 

@@ -2,7 +2,7 @@
 {
     public class AberturaContaCommandResponse
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string Numero { get; set; }
         public string Agencia { get; set; }
         // public string CodigoCompe { get; set; }

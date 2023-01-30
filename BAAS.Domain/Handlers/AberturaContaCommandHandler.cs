@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using Baas.Domain.Commands;
+using Baas.Domain.Events;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Responses;
-using MassTransit;
+using BAAS.Domain.Produces;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
@@ -16,19 +17,19 @@ namespace Baas.Domain.Handlers
     {
         private readonly ILogger<AberturaContaCommandHandler> _logger;
         private readonly IMapper _mapper;
-        private readonly IBus _bus;
+        private readonly IBusMessage _busMessage;
         private readonly IAccountRepository _contaRepository;
 
-        public AberturaContaCommandHandler(ILogger<AberturaContaCommandHandler> logger, IMapper mapper, IBus bus, IAccountRepository contaRepository)
+        public AberturaContaCommandHandler(ILogger<AberturaContaCommandHandler> logger, IMapper mapper, IBusMessage busMessage, IAccountRepository contaRepository)
         {
             _logger = logger;
             _mapper = mapper;
-            _bus = bus;
+            _busMessage = busMessage;
             _contaRepository = contaRepository;
         }
 
         public async Task<AberturaContaCommandResponse> Handle(AberturaContaCommand request, CancellationToken cancellationToken)
-        {
+         {
             try
             {
                 request.Validate();
@@ -41,16 +42,15 @@ namespace Baas.Domain.Handlers
                 await _contaRepository.Insert(conta);
 
                 _logger.LogInformation("Conta {Numero} aberta com sucesso.", conta.Numero);
-                //TODO: Criar Evento
-                //try
-                //{
-                //    await _bus.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
-                //    _logger.LogInformation("Evento de conta aberta publicado com sucesso");
-                //}
-                //catch (Exception ex)
-                //{
-                //    _logger.LogError(ex, "Ocorreu um erro ao publicar o evento de conta aberta");
-                //}
+                try
+                {
+                    _busMessage.Init(_mapper.Map<ContaAbertaEvent>(conta));
+                    _logger.LogInformation("Evento de conta aberta publicado com sucesso");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Ocorreu um erro ao publicar o evento de conta aberta");
+                }
                 return _mapper.Map<AberturaContaCommandResponse>(conta);
             }
             catch (Exception ex)
@@ -70,46 +70,4 @@ namespace Baas.Domain.Handlers
             return numericString;
         }
     }
-
-    //public class ContaRepository : IContaRepository
-    //{
-    //    private readonly ApplicationDbContext _context;
-
-    //    public ContaRepository(ApplicationDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-
-    //    public async Task<Conta> AddAsync(Conta entity)
-    //    {
-    //        await _context.Contas.AddAsync(entity);
-    //        await _context.SaveChangesAsync();
-    //        return entity;
-    //    }
-    //}
-    //public class MovimentacaoRepository : IMovimentacaoRepository
-    //{
-    //    private readonly ApplicationDbContext _context;
-
-    //    public MovimentacaoRepository(ApplicationDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-
-    //    public async Task<Movimentacao> AddAsync(Movimentacao entity)
-    //    {
-    //        await _context.Contas.AddAsync(entity);
-    //        await _context.SaveChangesAsync();
-    //        return entity;
-    //    }
-    //}
-
-    //public interface IContaRepository
-    //{
-    //    Task<Conta> AddAsync(Conta entity);
-    //}
-    //public interface IMovimentacaoRepository
-    //{
-    //    Task<Movimentacao> AddAsync(Movimentacao entity);
-    //}
 }

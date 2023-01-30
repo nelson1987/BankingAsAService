@@ -5,6 +5,8 @@ using Baas.Domain.Entities;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Infra.DbContext;
 using Baas.Infra.Repositories;
+using BAAS.Domain.Produces;
+using BAAS.Events;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -52,6 +54,7 @@ namespace Baas.Api
             services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
             services.AddTransient<IEnterpriseRepository, EnterpriseRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
+            services.AddTransient<IBusMessage, ProcudeMessage>();
             //services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
 
             //services.AddTransient<IAccountRepository, AccountRepository>();

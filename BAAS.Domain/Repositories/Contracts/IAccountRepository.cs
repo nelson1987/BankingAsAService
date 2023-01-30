@@ -9,6 +9,6 @@ namespace Baas.Domain.Repositories.Contracts
 
         Task<Entities.Account> Update(AccountDTO conta);
 
-        Task<Entities.Account> Delete(AccountDTO conta);
+        Task Delete(AccountDTO conta);
     }
 }

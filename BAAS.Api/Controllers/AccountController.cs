@@ -1,4 +1,5 @@
 ﻿using Baas.Domain.Account.Create;
+using Baas.Domain.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,7 +21,7 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+        /*
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         public async Task<IActionResult> GetAccount(string numero, int idCliente)
         {
@@ -31,19 +32,19 @@ namespace Baas.Api.Controllers
             });
             return Ok(response);
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand model)
-        //{
-        //    var response = await _mediator.Send(model);
-        //    return Ok();
-        //    //if (response.Errors.Any())
-        //    //{
-        //    //    return BadRequest(response.Errors);
-        //    //}
-        //    //
-        //    //return Ok(response.Value);
-        //}
+        */
+        [HttpPost]
+        public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand model)
+        {
+            var response = await _mediator.Send(model);
+            return Ok();
+            //if (response.Errors.Any())
+            //{
+            //    return BadRequest(response.Errors);
+            //}
+            //
+            //return Ok(response.Value);
+        }
 
         /*
         [HttpDelete]
