@@ -20,51 +20,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Commands\CreditTransactionCommand.cs" />
-    <Compile Remove="Commands\DebitTransactionCommand.cs" />
-    <Compile Remove="Commands\DeleteAccountCommand.cs" />
-    <Compile Remove="Commands\IncluirMovimentacaoCommand.cs" />
-    <Compile Remove="Commands\InsertAccountCommand.cs" />
-    <Compile Remove="Commands\UpdateAccountCommand.cs" />
-    <Compile Remove="Events\CreatedAccountEvent.cs" />
-    <Compile Remove="Events\CreditTransactionEvent.cs" />
-    <Compile Remove="Events\DebitTransactionEvent.cs" />
     <Compile Remove="Events\Events.cs" />
-    <Compile Remove="Events\GetTransactionQueryEvent.cs" />
-    <Compile Remove="Events\MovimentacaoIncluidaEvent.cs" />
-    <Compile Remove="Handlers\AccountQueryHandler.cs" />
-    <Compile Remove="Handlers\CreateAccountHandler.cs" />
-    <Compile Remove="Handlers\CreditTransactionHandler.cs" />
-    <Compile Remove="Handlers\DebitTransactionHandler.cs" />
-    <Compile Remove="Handlers\DeleteAccountHandler.cs" />
-    <Compile Remove="Handlers\GetTransactionQueryHandler.cs" />
-    <Compile Remove="Handlers\UpdateAccountHandler.cs" />
-    <Compile Remove="Queries\AccountQuery.cs" />
-    <Compile Remove="Queries\GetTransactionQuery.cs" />
-    <Compile Remove="Queries\MovimentacaoQuery.cs" />
-    <Compile Remove="Repositories\Contracts\ICreatedAccountEventRepository.cs" />
-    <Compile Remove="Repositories\Contracts\ITransactionRepository.cs" />
-    <Compile Remove="Responses\AccountQueryResponse.cs" />
-    <Compile Remove="Responses\CreditTransactionResponse.cs" />
-    <Compile Remove="Responses\DebitTransactionResponse.cs" />
-    <Compile Remove="Responses\DeleteAccountResponse.cs" />
-    <Compile Remove="Responses\GetTransactionQueryResponse.cs" />
-    <Compile Remove="Responses\IncluirMovimentacaoResponse.cs" />
-    <Compile Remove="Responses\InsertAccountResponse.cs" />
-    <Compile Remove="Responses\MovimentacaoQueryResponse.cs" />
-    <Compile Remove="Responses\UpdateAccountResponse.cs" />
-    <Compile Remove="Validators\IncluirMovimentacaoCommandValidator.cs" />
-    <Compile Remove="Validators\MovimentacaoValidator.cs" />
+    <Compile Remove="Repositories\ContaCorrenteRepository.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="Entities\CartaoCredito.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\ClientModel.cs" />
     <Compile Include="Entities\Conta.cs" />
     <Compile Include="Entities\ContaCorrente.cs" />
     <Compile Include="Entities\Emprestimo.cs" />
+    <Compile Include="Entities\EnterpriseModel.cs" />
     <Compile Include="Entities\Investimento.cs" />
+    <Compile Include="Entities\Movimentacao.cs" />
+    <Compile Include="Entities\TransactionModel.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\GridResponse.cs" />
+    <Compile Include="Helpers\QueryCreator.cs" />
     <Compile Include="Repositories\DTOs\AccountDTO.cs" />
     <Compile Include="Entities\Account.cs" />
   </ItemGroup>
@@ -79,10 +53,6 @@
     <PackageReference Include="RabbitMQ.Client" Version="6.4.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="3.1.0" />
 
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>

@@ -4,12 +4,12 @@ namespace Baas.Domain.Repositories.Contracts
 {
     public interface IClientRepository
     {
-        Task<Client> Get(ClientDTO conta);
+        Task<Cliente> Get(ClientDTO conta);
 
-        Task<Client> Insert(ClientDTO conta);
+        Task<Cliente> Insert(ClientDTO conta);
 
-        Task<Client> Update(ClientDTO conta);
+        Task<Cliente> Update(ClientDTO conta);
 
-        Task<Client> Delete(ClientDTO conta);
+        Task<Cliente> Delete(ClientDTO conta);
     }
 }

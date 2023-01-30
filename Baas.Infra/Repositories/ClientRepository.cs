@@ -5,26 +5,24 @@ using System.Threading.Tasks;
 
 namespace Baas.Infra.Repositories
 {
-    public class ClientRepository : IClientRepository
+    public class ClienteRepository : IClienteRepository
     {
-        public Task<ClientModel> Delete(ClientDTO conta)
+        private readonly MyDbContext _context;
+
+        public ClienteRepository(MyDbContext context)
         {
-            throw new System.NotImplementedException();
+            _context = context;
         }
 
-        public Task<ClientModel> Get(ClientDTO conta)
+        public async Task<Cliente> Buscar(int id)
         {
-            throw new System.NotImplementedException();
+            return await _context.Clientes.FindAsync(id);
         }
 
-        public Task<ClientModel> Insert(ClientDTO conta)
+        public async Task Inserir(Cliente cliente)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<ClientModel> Update(ClientDTO conta)
-        {
-            throw new System.NotImplementedException();
+            _context.Clientes.Add(cliente);
+            await _context.SaveChangesAsync();
         }
     }
 }

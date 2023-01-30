@@ -7,13 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\AccountController.cs" />
-    <Compile Remove="Controllers\ClientController.cs" />
-    <Compile Remove="Controllers\EnterpriseController.cs" />
-    <Compile Remove="Controllers\TransactionController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MassTransit" Version="8.0.12" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.12" />
     <PackageReference Include="MediatR" Version="11.0.0" />

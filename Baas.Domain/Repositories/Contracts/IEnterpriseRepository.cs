@@ -4,12 +4,12 @@ namespace Baas.Domain.Repositories.Contracts
 {
     public interface IEnterpriseRepository
     {
-        Task<EnterpriseModel> Get(EnterpriseDTO conta);
+        Task<Enterprise> Get(EnterpriseDTO conta);
 
-        Task<EnterpriseModel> Insert(EnterpriseDTO conta);
+        Task<Enterprise> Insert(EnterpriseDTO conta);
 
-        Task<EnterpriseModel> Update(EnterpriseDTO conta);
+        Task<Enterprise> Update(EnterpriseDTO conta);
 
-        Task<EnterpriseModel> Delete(EnterpriseDTO conta);
+        Task<Enterprise> Delete(EnterpriseDTO conta);
     }
 }
