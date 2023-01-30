@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Transaction;
+﻿using Baas.Domain.Queries;
 
 namespace Baas.Domain.Repositories.DTOs
 {

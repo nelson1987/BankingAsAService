@@ -1,7 +1,7 @@
 ﻿using Baas.Domain.Entities;
 using System;
 
-namespace Baas.Domain.Transaction
+namespace Baas.Domain.Responses
 {
     public class GetTransactionQueryResponse
     {

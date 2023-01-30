@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Account.CreatedAccount
+namespace Baas.Domain.Events
 {
     public interface ICreatedAccountEvent : INotification
     {

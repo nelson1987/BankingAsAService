@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Entities;
+﻿using Baas.Domain.Events;
 using MediatR;
 using System;
 using System.Threading;

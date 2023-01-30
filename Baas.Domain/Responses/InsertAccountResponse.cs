@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Account.Create
+﻿namespace Baas.Domain.Responses
 {
     public class InsertAccountResponse
     {

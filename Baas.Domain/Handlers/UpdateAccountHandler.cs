@@ -1,5 +1,5 @@
-﻿using Baas.Domain.Account.Update;
-using Baas.Domain.Commands;
+﻿using Baas.Domain.Commands;
+using Baas.Domain.Responses;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

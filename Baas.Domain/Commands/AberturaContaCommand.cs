@@ -1,4 +1,5 @@
-﻿using Baas.Domain.Entities;
+﻿using Baas.Domain.Responses;
+using Baas.Domain.Validators;
 using FluentValidation;
 using MediatR;
 

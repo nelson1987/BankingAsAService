@@ -1,4 +1,5 @@
 ﻿using Baas.Domain.Entities;
+using Baas.Domain.Repositories.DTOs;
 using System.Threading.Tasks;
 
 namespace Baas.Domain.Repositories.Contracts

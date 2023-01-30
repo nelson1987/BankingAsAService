@@ -26,5 +26,10 @@ namespace Baas.Domain.Entities
             Pontos -= pontos;
             cartaoDestino.Pontos += pontos;
         }
+
+        public void AumentarLimite(decimal valor)
+        {
+            Limite += valor;
+        }
     }
 }

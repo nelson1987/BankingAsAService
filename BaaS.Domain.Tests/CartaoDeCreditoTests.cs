@@ -47,5 +47,37 @@ namespace BaaS.Domain.Tests
             // Act & Assert
             Assert.Throws<InvalidOperationException>(() => _cartao.Comprar(1100));
         }
+
+        [Fact]
+        public void PagarFatura_QuandoValorValido_DeveReduzirSaldo()
+        {
+            // Arrange
+            var cartao = new CartaoCredito
+            {
+                Saldo = 100
+            };
+
+            // Act
+            cartao.PagarFatura(50);
+
+            // Assert
+            Assert.Equal(50, cartao.Saldo);
+        }
+
+        [Fact]
+        public void AumentarLimite_QuandoValorValido_DeveriaAumentarLimite()
+        {
+            // Arrange
+            var cartao = new CartaoCredito
+            {
+                Limite = 1000
+            };
+
+            // Act
+            cartao.AumentarLimite(500);
+
+            // Assert
+            Assert.Equal(1500, cartao.Limite);
+        }
     }
 }

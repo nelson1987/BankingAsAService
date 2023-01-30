@@ -1,5 +1,5 @@
 ﻿using Baas.Domain.Commands;
-using Baas.Domain.Tramsaction.Debit;
+using Baas.Domain.Responses;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;

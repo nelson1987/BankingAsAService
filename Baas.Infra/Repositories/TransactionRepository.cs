@@ -5,6 +5,7 @@ using Dapper;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Baas.Infra.Repositories
 {

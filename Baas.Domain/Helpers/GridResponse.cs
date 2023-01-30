@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Baas.Domain.Transaction
+namespace Baas.Domain.Helpers
 {
     public static class GridResponse<T> where T : class
     {
@@ -11,7 +11,7 @@ namespace Baas.Domain.Transaction
             int pageIndex = Convert.ToInt32(page) - 1;
             int pageSize = rows;
             int totalRecords = products.Count();
-            int totalPages = (int)Math.Ceiling((float)totalRecords / (float)pageSize);
+            int totalPages = (int)Math.Ceiling(totalRecords / (float)pageSize);
 
             var result = (from produto in products
                             .Skip(pageIndex * pageSize)

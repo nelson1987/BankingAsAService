@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Tramsaction.Credit
+﻿namespace Baas.Domain.Responses
 {
     public class CreditTransactionResponse
     {

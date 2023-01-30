@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Baas.Domain.Account.Create;
-using Baas.Domain.Account.CreatedAccount;
 using Baas.Domain.Commands;
+using Baas.Domain.Events;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
+using Baas.Domain.Responses;
 using MassTransit;
 using MediatR;
 using System.Threading;

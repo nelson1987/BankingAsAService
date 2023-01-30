@@ -1,4 +1,5 @@
-﻿using Baas.Domain.Commands;
+﻿using Baas.Domain.Account.Create;
+using Baas.Domain.Commands;
 using System;
 
 namespace Baas.Domain.Repositories.DTOs
@@ -19,6 +20,16 @@ namespace Baas.Domain.Repositories.DTOs
                 IdCliente = request.IdCliente,
                 Tipo = request.Tipo
             };
+        }
+
+        internal static AccountDTO MappingFromModel(AccountQuery request)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static AccountDTO MappingFromModel(InsertAccountCommand command)
+        {
+            throw new NotImplementedException();
         }
         //public int IdEnterpriseAccount { get; set; }
         //public string Name { get; set; }

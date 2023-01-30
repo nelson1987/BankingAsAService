@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Tramsaction.Debit
+namespace Baas.Domain.Events
 {
     public class DebitTransactionEvent : INotification
     {

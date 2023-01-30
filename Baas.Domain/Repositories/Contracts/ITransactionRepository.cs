@@ -1,4 +1,5 @@
-﻿using Baas.Domain.Repositories.DTOs;
+﻿using Baas.Domain.Entities;
+using Baas.Domain.Repositories.DTOs;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Events
 {
     /*
     public class IncluirMovimentacaoHandler : IRequestHandler<IncluirMovimentacaoCommand, IncluirMovimentacaoResponse>

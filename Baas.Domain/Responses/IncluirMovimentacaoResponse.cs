@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Responses
 {
     public class IncluirMovimentacaoResponse
     {

@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Tramsaction.Debit
+﻿namespace Baas.Domain.Responses
 {
     public class DebitTransactionResponse
     {

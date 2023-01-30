@@ -1,6 +1,7 @@
 ﻿using Baas.Domain.Account.Create;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
+using Baas.Domain.Responses;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Baas.Domain.Commands;
 using Baas.Domain.Entities;
+using Baas.Domain.Responses;
 using MediatR;
 using System;
 using System.Threading;

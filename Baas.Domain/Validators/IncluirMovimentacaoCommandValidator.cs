@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using Baas.Domain.Commands;
+using FluentValidation;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Validators
 {
     public class IncluirMovimentacaoCommandValidator : AbstractValidator<IncluirMovimentacaoCommand>
     {

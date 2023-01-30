@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Account.Update
+﻿namespace Baas.Domain.Responses
 {
     public class UpdateAccountResponse
     { }

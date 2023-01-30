@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Entities;
+﻿using Baas.Domain.Events;
 using Baas.Domain.Helpers;
 using MediatR;
 using RabbitMQ.Client;
@@ -16,7 +16,7 @@ namespace Baas.Domain.Handlers
         //{
         //    _repository = repository;
         //}
-    
+
         //public Task Handle(CreatedAccountEvent notification, CancellationToken cancellationToken)
         //{
         //    //_repository.Insert(AccountDTO.MappingFromEvent(notification));
@@ -35,7 +35,7 @@ namespace Baas.Domain.Handlers
                                    autoDelete: false,
                                    arguments: null);
 
-                
+
                 var body = Encoding.UTF8.GetBytes(notification.ToJson());
 
                 channel.BasicPublish(exchange: "",

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Transaction
+namespace Baas.Domain.Events
 {
     public class GetTransactionQueryEvent : INotification
     {

@@ -1,6 +1,7 @@
-﻿using FluentValidation;
+﻿using Baas.Domain.Entities;
+using FluentValidation;
 
-namespace Baas.Domain.Entities
+namespace Baas.Domain.Validators
 {
     public class MovimentacaoValidator : AbstractValidator<MovimentacaoQuery>
     {

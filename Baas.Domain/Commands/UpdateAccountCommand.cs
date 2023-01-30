@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Account.Update;
+﻿using Baas.Domain.Responses;
 using MediatR;
 
 namespace Baas.Domain.Commands

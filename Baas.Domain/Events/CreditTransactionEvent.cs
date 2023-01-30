@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Baas.Domain.Tramsaction.Credit
+namespace Baas.Domain.Events
 {
     public class CreditTransactionEvent : INotification
     {

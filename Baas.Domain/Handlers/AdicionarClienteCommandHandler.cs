@@ -24,7 +24,7 @@ namespace Baas.Domain.Handlers
                 Criacao = DateTime.Now
             };
 
-            _repository.Add(cliente);
+            await _repository.Add(cliente);
             await _repository.SaveChangesAsync();
 
             return cliente.Id;

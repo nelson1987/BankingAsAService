@@ -1,4 +1,4 @@
-﻿namespace Baas.Domain.Account.Delete
+﻿namespace Baas.Domain.Responses
 {
     public class DeleteAccountResponse
     {

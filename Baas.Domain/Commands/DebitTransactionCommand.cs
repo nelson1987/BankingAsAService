@@ -1,4 +1,4 @@
-﻿using Baas.Domain.Tramsaction.Debit;
+﻿using Baas.Domain.Responses;
 using MediatR;
 using System;
 

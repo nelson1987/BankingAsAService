@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Baas.Domain.Responses;
+using MediatR;
 using System;
 
 namespace Baas.Domain.Commands
