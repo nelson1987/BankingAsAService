@@ -1,5 +1,6 @@
 ﻿using Baas.Domain.Commands;
 using Baas.Domain.Entities;
+using Baas.Domain.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

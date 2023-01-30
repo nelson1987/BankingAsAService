@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Baas.Domain.Commands;
 using Baas.Domain.Entities;
+using Baas.Domain.Events;
 using Baas.Domain.Repositories.DTOs;
+using Baas.Domain.Responses;
 
 namespace Baas.Api.Filters
 {

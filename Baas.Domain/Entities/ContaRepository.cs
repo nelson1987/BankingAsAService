@@ -1,7 +1,10 @@
-﻿namespace Baas.Domain.Entities
+﻿using System.Threading.Tasks;
+
+namespace Baas.Domain.Entities
 {
     public class ContaRepository : IContaRepository
     {
+        /*
         private readonly ApplicationDbContext _context;
 
         public ContaRepository(ApplicationDbContext context)
@@ -14,6 +17,11 @@
             await _context.Contas.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
+        }
+        */
+        public Task<Conta> AddAsync(Conta entity)
+        {
+            throw new System.NotImplementedException();
         }
     }
     //public class MovimentacaoRepository : IMovimentacaoRepository

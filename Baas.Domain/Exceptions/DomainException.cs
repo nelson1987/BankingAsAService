@@ -49,6 +49,7 @@ namespace Baas.Domain.Exceptions
         ERRO_SISTEMA
     }
 
+    [AttributeUsage(AttributeTargets.All, AllowMultiple = false)]
     public class ErroPadraoAttribute : Attribute
     {
         public string Mensagem { get; set; }

@@ -6,9 +6,10 @@ namespace Baas.Infra.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        private readonly MyDbContext _context;
+        /*
+        private readonly DbSession _context;
 
-        public ClienteRepository(MyDbContext context)
+        public ClienteRepository(DbSession context)
         {
             _context = context;
         }
@@ -32,6 +33,36 @@ namespace Baas.Infra.Repositories
         {
             _context.Clientes.Add(cliente);
             //await _context.SaveChangesAsync();
+        }
+
+        public Task SaveChangesAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(object cliente)
+        {
+            throw new System.NotImplementedException();
+        }
+        */
+        public Task Add(Cliente cliente)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Cliente> Buscar(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Cliente> GetByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Inserir(Cliente cliente)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Task SaveChangesAsync()
