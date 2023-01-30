@@ -11,26 +11,4 @@ namespace Baas.Domain.Repositories.Contracts
 
         Task<Entities.Account> Delete(AccountDTO conta);
     }
-
-    //public interface IClientRepository
-    //{
-    //    Task<ClientModel> Get(ClientDTO conta);
-
-    //    Task<ClientModel> Insert(ClientDTO conta);
-
-    //    Task<ClientModel> Update(ClientDTO conta);
-
-    //    Task<ClientModel> Delete(ClientDTO conta);
-    //}
-
-    //public interface IEnterpriseRepository
-    //{
-    //    Task<EnterpriseModel> Get(EnterpriseDTO conta);
-
-    //    Task<EnterpriseModel> Insert(EnterpriseDTO conta);
-
-    //    Task<EnterpriseModel> Update(EnterpriseDTO conta);
-
-    //    Task<EnterpriseModel> Delete(EnterpriseDTO conta);
-    //}
 }

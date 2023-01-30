@@ -16,7 +16,7 @@ namespace Baas.Api.Filters
             .ForMember(x => x.Id, y => y.Ignore())
             .ForMember(x => x.Numero, y => y.Ignore());
             CreateMap<AccountDTO, ContaAbertaEvent>();
-            CreateMap<AccountDTO, AberturaContaResponse>();
+            CreateMap<AccountDTO, AberturaContaCommandResponse>();
             //CreateMap<AccountDTO, AccountQuery>();
 
             //            Missing type map configuration or unsupported mapping.

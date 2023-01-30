@@ -47,6 +47,7 @@ namespace Baas.Api
             services.AddScoped<DbSession>();
             services.AddScoped<MongoDbSession>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IContaCorrenteRepository, ContaCorrenteRepository>();
             //services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
 
             //services.AddTransient<IAccountRepository, AccountRepository>();
@@ -62,7 +63,6 @@ namespace Baas.Api
             //BusControl.Start();
 
             services.AddHealthChecks();
-
             services.AddMassTransit(bus =>
             {
                 bus.SetKebabCaseEndpointNameFormatter();
@@ -80,23 +80,21 @@ namespace Baas.Api
                     cfg.ConfigureEndpoints(ctx, KebabCaseEndpointNameFormatter.Instance);
                 });
             });
-            services.AddHostedService<ContaAbertaEventService>();
+            //services.AddHostedService<ContaAbertaEventService>();
             services.AddOptions<MassTransitHostOptions>()
                         .Configure(options =>
                         {
-                // if specified, waits until the bus is started before
-                // returning from IHostedService.StartAsync
-                // default is false
-                options.WaitUntilStarted = true;
+                            // if specified, waits until the bus is started before
+                            // returning from IHostedService.StartAsync
+                            // default is false
+                            options.WaitUntilStarted = true;
 
-                // if specified, limits the wait time when starting the bus
-                options.StartTimeout = TimeSpan.FromSeconds(10);
+                            // if specified, limits the wait time when starting the bus
+                            options.StartTimeout = TimeSpan.FromSeconds(10);
 
-                // if specified, limits the wait time when stopping the bus
-                options.StopTimeout = TimeSpan.FromSeconds(30);
+                            // if specified, limits the wait time when stopping the bus
+                            options.StopTimeout = TimeSpan.FromSeconds(30);
                         });
-
-
 
 
             var config = new AutoMapper.MapperConfiguration(cfg =>

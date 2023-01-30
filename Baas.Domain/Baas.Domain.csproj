@@ -58,7 +58,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Entities\CartaoCredito.cs" />
     <Compile Include="Entities\Conta.cs" />
+    <Compile Include="Entities\ContaCorrente.cs" />
+    <Compile Include="Entities\Emprestimo.cs" />
+    <Compile Include="Entities\Investimento.cs" />
     <Compile Include="Exceptions\DomainException.cs" />
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Repositories\DTOs\AccountDTO.cs" />

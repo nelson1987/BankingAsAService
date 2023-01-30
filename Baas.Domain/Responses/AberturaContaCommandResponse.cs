@@ -1,6 +1,6 @@
 ﻿namespace Baas.Domain.Entities
 {
-    public class AberturaContaResponse
+    public class AberturaContaCommandResponse
     {
         public int Id { get; set; }
         public string Numero { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Baas.Domain.Commands;
+using Baas.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -48,7 +49,7 @@ namespace Baas.Api.Controllers
         }
         */
         [HttpPost("create")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AberturaContaCommand))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AberturaContaCommandResponse))]
         [ProducesResponseType(typeof(string), 400)]
         [SwaggerOperation(
             Summary = "Create a new value",

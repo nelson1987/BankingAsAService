@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Baas.Domain.Entities
 {
-    public class AberturaContaCommandHandler : IRequestHandler<AberturaContaCommand, AberturaContaResponse>
+    public class AberturaContaCommandHandler : IRequestHandler<AberturaContaCommand, AberturaContaCommandResponse>
     {
         private readonly ILogger<AberturaContaCommandHandler> _logger;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace Baas.Domain.Entities
             _contaRepository = contaRepository;
         }
 
-        public async Task<AberturaContaResponse> Handle(AberturaContaCommand request, CancellationToken cancellationToken)
+        public async Task<AberturaContaCommandResponse> Handle(AberturaContaCommand request, CancellationToken cancellationToken)
         {
             try
             {
@@ -40,16 +40,17 @@ namespace Baas.Domain.Entities
                 await _contaRepository.Insert(conta);
 
                 _logger.LogInformation("Conta {Numero} aberta com sucesso.", conta.Numero);
-                try
-                {
-                    await _bus.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
-                    _logger.LogInformation("Evento de conta aberta publicado com sucesso");
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Ocorreu um erro ao publicar o evento de conta aberta");
-                }
-                return _mapper.Map<AberturaContaResponse>(conta);
+                //TODO: Criar Evento
+                //try
+                //{
+                //    await _bus.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
+                //    _logger.LogInformation("Evento de conta aberta publicado com sucesso");
+                //}
+                //catch (Exception ex)
+                //{
+                //    _logger.LogError(ex, "Ocorreu um erro ao publicar o evento de conta aberta");
+                //}
+                return _mapper.Map<AberturaContaCommandResponse>(conta);
             }
             catch (Exception ex)
             {

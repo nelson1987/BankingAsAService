@@ -88,7 +88,7 @@ namespace Baas.Domain.Entities
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _bus.Address = "Conta-Aberta-Event";
+                //_bus.Address = "Conta-Aberta-Event";
                 await _bus.Publish(new ContaAbertaEvent { Numero = "World" }, stoppingToken);
                 await Task.Delay(1000, stoppingToken);
 

@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Baas.Domain.Commands
 {
-    public class AberturaContaCommand : IRequest<AberturaContaResponse>
+    public class AberturaContaCommand : IRequest<AberturaContaCommandResponse>
     {
         //public string CodigoCompe { get; set; }
         public string Tipo => "1";
