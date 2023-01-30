@@ -29,10 +29,14 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Conta.cs" />
     <Compile Include="Entities\ContaCorrente.cs" />
+    <Compile Include="Entities\ContaRepository.cs" />
     <Compile Include="Entities\Emprestimo.cs" />
     <Compile Include="Entities\EnterpriseModel.cs" />
+    <Compile Include="Entities\IContaRepository.cs" />
+    <Compile Include="Entities\IMovimentacaoRepository.cs" />
     <Compile Include="Entities\Investimento.cs" />
     <Compile Include="Entities\Movimentacao.cs" />
+    <Compile Include="Entities\MovimentacaoRepository.cs" />
     <Compile Include="Entities\ObterInvestimentoQuery.cs" />
     <Compile Include="Entities\TransactionModel.cs" />
     <Compile Include="Exceptions\DomainException.cs" />

@@ -4,6 +4,7 @@ namespace Baas.Domain.Entities
 {
     public class Investimento
     {
+        public string Id { get; set; }
         public string Nome { get; set; }
         public decimal Saldo { get; set; }
         public DateTime Data { get; set; }

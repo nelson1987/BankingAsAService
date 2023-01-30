@@ -4,6 +4,7 @@ namespace Baas.Domain.Entities
 {
     public class CartaoCredito
     {
+        public int Id { get; set; }
         public string NumeroCartao { get; set; }
         public decimal Limite { get; set; }
         public decimal Saldo { get; set; }

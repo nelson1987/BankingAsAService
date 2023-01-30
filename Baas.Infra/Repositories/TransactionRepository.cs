@@ -38,12 +38,9 @@ namespace Baas.Infra.Repositories
 
         public async Task<IEnumerable<Transaction>> GetAccountByNumber(TransactionDTO conta)
         {
-
-
-
             using (var conn = _dbSession.Connection)
             {
-                return await conn.QueryAsync<TransactionModel>
+                return await conn.QueryAsync<Transaction>
                     (QuerySelect(), conta);
             }
         }
@@ -65,6 +62,16 @@ namespace Baas.Infra.Repositories
                         ,[DOCUMENTO_CONTRAPARTE] as DocumentoContraParte
                     FROM [DB_BAAS].[dbo].[TB_TRANSACAO]
                     WHERE IDT_CONTA = @Conta";
+        }
+
+        Task<IEnumerable<Domain.Entities.Transaction>> ITransactionRepository.GetAccountByNumber(TransactionDTO conta)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        Task<Domain.Entities.Transaction> ITransactionRepository.CreateAccount(TransactionDTO accountDTO)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
