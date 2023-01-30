@@ -47,7 +47,11 @@ namespace Baas.Api
             services.AddScoped<DbSession>();
             services.AddScoped<MongoDbSession>();
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<IClienteRepository, ClienteRepository>();
             services.AddTransient<IContaCorrenteRepository, ContaCorrenteRepository>();
+            services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
+            services.AddTransient<IEnterpriseRepository, EnterpriseRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
             //services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
 
             //services.AddTransient<IAccountRepository, AccountRepository>();
