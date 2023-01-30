@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Infra", "BAsS.Infra\BA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Api", "BAsS.Api\BAsS.Api.csproj", "{A707AA14-4E8A-42B9-996A-D016CF404452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAsS.Domain.Tests", "BAsS.Domain.Tests\BAsS.Domain.Tests.csproj", "{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAsS.Infra.Tests", "BAsS.Infra.Tests\BAsS.Infra.Tests.csproj", "{4D44790F-8C79-42CE-B346-DA9BF2E7675F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Domain.Tests", "BAsS.Domain.Tests\BAsS.Domain.Tests.csproj", "{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,17 +35,12 @@ Global
 		{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D44790F-8C79-42CE-B346-DA9BF2E7675F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D44790F-8C79-42CE-B346-DA9BF2E7675F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D44790F-8C79-42CE-B346-DA9BF2E7675F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D44790F-8C79-42CE-B346-DA9BF2E7675F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1} = {9136923B-7BE6-4D0D-95D2-6BA2D39F3E39}
-		{4D44790F-8C79-42CE-B346-DA9BF2E7675F} = {9136923B-7BE6-4D0D-95D2-6BA2D39F3E39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25FD40A9-2AE7-46E9-8321-033F753DDD23}
