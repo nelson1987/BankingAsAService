@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Domain", "Baas.Domain\Baas.Domain.csproj", "{E97AFA43-B3C4-4E81-AFBE-A519904388FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Domain", "BAsS.Domain\BAsS.Domain.csproj", "{E97AFA43-B3C4-4E81-AFBE-A519904388FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9136923B-7BE6-4D0D-95D2-6BA2D39F3E39}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Infra", "Baas.Infra\Baas.Infra.csproj", "{81A3A808-03B2-41FB-AE3D-0A525AFDF453}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Infra", "BAsS.Infra\BAsS.Infra.csproj", "{81A3A808-03B2-41FB-AE3D-0A525AFDF453}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Baas.Api", "Baas.Api\Baas.Api.csproj", "{A707AA14-4E8A-42B9-996A-D016CF404452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAsS.Api", "BAsS.Api\BAsS.Api.csproj", "{A707AA14-4E8A-42B9-996A-D016CF404452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaaS.Domain.Tests", "BaaS.Domain.Tests\BaaS.Domain.Tests.csproj", "{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAsS.Domain.Tests", "BAsS.Domain.Tests\BAsS.Domain.Tests.csproj", "{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaaS.Infra.Tests", "BaaS.Infra.Tests\BaaS.Infra.Tests.csproj", "{4D44790F-8C79-42CE-B346-DA9BF2E7675F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAsS.Infra.Tests", "BAsS.Infra.Tests\BAsS.Infra.Tests.csproj", "{4D44790F-8C79-42CE-B346-DA9BF2E7675F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
