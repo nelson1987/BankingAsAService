@@ -5,6 +5,7 @@ using Baas.Domain.Entities;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Infra.DbContext;
 using Baas.Infra.Repositories;
+using BAAS.Domain.Consumers;
 using BAAS.Domain.Produces;
 using BAAS.Events;
 using MassTransit;
@@ -55,10 +56,26 @@ namespace Baas.Api
             services.AddTransient<IEnterpriseRepository, EnterpriseRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<IBusMessage, ProcudeMessage>();
+            //services.AddScoped<IPublishEndpoint>();
             //services.AddTransient<ICreatedAccountEventRepository, CreatedAccountEventRepository>();
 
             //services.AddTransient<IAccountRepository, AccountRepository>();
             //services.AddTransient<ITransactionRepository, TransactionRepository>();
+
+
+            services.AddMassTransit(x =>
+            {
+                x.SetKebabCaseEndpointNameFormatter();
+                x.AddConsumer<ContaAbertaConsumer>(typeof(ContaAbertaConsumerDefinition));
+
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+
+
+
 
             //RabbitMQManager.ConfigureRabbitMQ();
             //services.AddRabbitMq(Configuration, (ContextBoundObject, configurator) =>
@@ -69,39 +86,41 @@ namespace Baas.Api
             //BusControl = MassTransitConfig.ConfigureBus();
             //BusControl.Start();
 
-            services.AddHealthChecks();
-            services.AddMassTransit(bus =>
-            {
-                bus.SetKebabCaseEndpointNameFormatter();
+            //services.AddHealthChecks();
+            //services.AddMassTransit(bus =>
+            //{
+            //    bus.SetKebabCaseEndpointNameFormatter();
 
-                bus.SetSnakeCaseEndpointNameFormatter();
+            //    bus.SetSnakeCaseEndpointNameFormatter();
 
-                bus.UsingRabbitMq((ctx, cfg) =>
-                {
-                    //cfg.Host("localhost:5672", "/", h => {
-                    //    h.Username("guest");
-                    //    h.Password("guest");
-                    //});
+            //    bus.UsingRabbitMq((ctx, cfg) =>
+            //    {
+            //        //cfg.Host("localhost:5672", "/", h => {
+            //        //    h.Username("guest");
+            //        //    h.Password("guest");
+            //        //});
 
-                    cfg.Host(Configuration.GetConnectionString("RabbitMq"));
-                    cfg.ConfigureEndpoints(ctx, KebabCaseEndpointNameFormatter.Instance);
-                });
-            });
+            //        cfg.Host(Configuration.GetConnectionString("RabbitMq"));
+            //        cfg.ConfigureEndpoints(ctx, KebabCaseEndpointNameFormatter.Instance);
+            //    });
+            //});
+
+
             //services.AddHostedService<ContaAbertaEventService>();
-            services.AddOptions<MassTransitHostOptions>()
-                        .Configure(options =>
-                        {
-                            // if specified, waits until the bus is started before
-                            // returning from IHostedService.StartAsync
-                            // default is false
-                            options.WaitUntilStarted = true;
+            //services.AddOptions<MassTransitHostOptions>()
+            //            .Configure(options =>
+            //            {
+            //                // if specified, waits until the bus is started before
+            //                // returning from IHostedService.StartAsync
+            //                // default is false
+            //                options.WaitUntilStarted = true;
 
-                            // if specified, limits the wait time when starting the bus
-                            options.StartTimeout = TimeSpan.FromSeconds(10);
+            //                // if specified, limits the wait time when starting the bus
+            //                options.StartTimeout = TimeSpan.FromSeconds(10);
 
-                            // if specified, limits the wait time when stopping the bus
-                            options.StopTimeout = TimeSpan.FromSeconds(30);
-                        });
+            //                // if specified, limits the wait time when stopping the bus
+            //                options.StopTimeout = TimeSpan.FromSeconds(30);
+            //            });
 
 
             var config = new AutoMapper.MapperConfiguration(cfg =>

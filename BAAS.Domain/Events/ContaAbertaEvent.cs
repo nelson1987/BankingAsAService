@@ -91,11 +91,11 @@ namespace Baas.Domain.Events
     //        }
     //    }
     //}
-    public class ContaAbertaEvent : IEvent
+    public class ContaAbertaEvent //: IEvent
     {
-        public Guid CorrelationId { get { return Guid.NewGuid(); } }
-
-        public string QueueName { get { return "Conta-Aberta-Event"; } }
+       //public Guid CorrelationId { get { return Guid.NewGuid(); } }
+       //
+       //public string QueueName { get { return "Conta-Aberta-Event"; } }
 
         public int Id { get; set; }
         public string Numero { get; set; }

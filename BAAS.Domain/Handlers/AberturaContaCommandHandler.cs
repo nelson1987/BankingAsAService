@@ -5,6 +5,7 @@ using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Responses;
 using BAAS.Domain.Produces;
+using MassTransit;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
@@ -17,14 +18,14 @@ namespace Baas.Domain.Handlers
     {
         private readonly ILogger<AberturaContaCommandHandler> _logger;
         private readonly IMapper _mapper;
-        private readonly IBusMessage _busMessage;
+        private readonly IPublishEndpoint _publishEndpoint;
         private readonly IAccountRepository _contaRepository;
 
-        public AberturaContaCommandHandler(ILogger<AberturaContaCommandHandler> logger, IMapper mapper, IBusMessage busMessage, IAccountRepository contaRepository)
+        public AberturaContaCommandHandler(ILogger<AberturaContaCommandHandler> logger, IMapper mapper, IPublishEndpoint busMessage, IAccountRepository contaRepository)
         {
             _logger = logger;
             _mapper = mapper;
-            _busMessage = busMessage;
+            _publishEndpoint = busMessage;
             _contaRepository = contaRepository;
         }
 
@@ -44,7 +45,7 @@ namespace Baas.Domain.Handlers
                 _logger.LogInformation("Conta {Numero} aberta com sucesso.", conta.Numero);
                 try
                 {
-                    _busMessage.Init(_mapper.Map<ContaAbertaEvent>(conta));
+                    await _publishEndpoint.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
                     _logger.LogInformation("Evento de conta aberta publicado com sucesso");
                 }
                 catch (Exception ex)
