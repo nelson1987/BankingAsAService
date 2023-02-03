@@ -50,6 +50,7 @@ namespace Baas.Api.Controllers
         }
         */
         [HttpPost("create")]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AberturaContaCommandResponse))]
         [ProducesResponseType(typeof(string), 400)]
         [SwaggerOperation(

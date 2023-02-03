@@ -45,6 +45,7 @@ namespace Baas.Api.Controllers
         /// <param name="empresa"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEnterprise([FromBody] InsertAccountCommand empresa)
@@ -54,6 +55,7 @@ namespace Baas.Api.Controllers
         }
 
         [HttpDelete]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteEnterprise([FromBody] DeleteAccountCommand empresa)
         {
             return Ok();

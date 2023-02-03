@@ -46,6 +46,7 @@ namespace Baas.Api.Controllers
         }
 
         [HttpPost]//("Credit")]
+        [ValidateAntiForgeryToken]
         [ProducesResponseType(typeof(string), 200)]
         [ProducesResponseType(typeof(string), 400)]
         [SwaggerOperation(
