@@ -41,8 +41,8 @@ namespace Baas.Domain.Handlers
                 conta.Numero = GetNumeroConta();
 
                 await _contaRepository.Insert(conta);
-
-                _logger.LogInformation("Conta {Numero} aberta com sucesso.", conta.Numero);
+                
+                _logger.LogInformation($"Conta {conta.Numero} aberta com sucesso.");
                 try
                 {
                     await _publishEndpoint.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
