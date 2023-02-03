@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Baas.Domain.Commands;
 using Baas.Domain.Events;
+using Baas.Domain.Helpers;
 using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using Baas.Domain.Responses;
@@ -42,7 +43,7 @@ namespace Baas.Domain.Handlers
 
                 await _contaRepository.Insert(conta);
                 
-                _logger.LogInformation($"Conta {conta.Numero} aberta com sucesso.");
+                _logger.LogInformation($"Conta {conta.ToJson()} aberta com sucesso.");
                 try
                 {
                     await _publishEndpoint.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
