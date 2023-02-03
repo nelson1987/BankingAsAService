@@ -27,6 +27,7 @@ public class ValuesController : ControllerBase
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     [Consumes("application/json")]
     [ProducesResponseType(typeof(string), 200)]
     [ProducesResponseType(typeof(string), 400)]
