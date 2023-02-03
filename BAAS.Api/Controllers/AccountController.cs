@@ -35,9 +35,10 @@ namespace Baas.Api.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand model)
+        public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand command)
         {
-            var response = await _mediator.Send(model);
+            _logger.LogDebug($"----> Page No '{command.ToJson()}'");
+            var response = await _mediator.Send(command);
             return Ok();
             //if (response.Errors.Any())
             //{

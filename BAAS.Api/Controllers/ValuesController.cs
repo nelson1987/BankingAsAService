@@ -4,6 +4,7 @@ using Baas.Domain.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Threading.Tasks;
@@ -61,6 +62,7 @@ namespace Baas.Api.Controllers
         )]
         public async Task<IActionResult> Create([FromBody] AberturaContaCommand command)
         {
+            _logger.LogDebug($"----> Page No '{command.ToJson()}'");
             var retorno = await _mediator.Send(command);
             return Ok(retorno);
         }

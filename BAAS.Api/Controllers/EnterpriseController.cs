@@ -42,16 +42,17 @@ namespace Baas.Api.Controllers
         /// <summary>
         /// Criar Empresa
         /// </summary>
-        /// <param name="empresa"></param>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateEnterprise([FromBody] InsertAccountCommand empresa)
+        public async Task<IActionResult> CreateEnterprise([FromBody] InsertAccountCommand command)
         {
-            var result = await _mediator.Send(empresa);
-            return CreatedAtAction(nameof(GetEnterprise), new { id = empresa.Id }, empresa);
+            _logger.LogDebug($"----> Page No '{command.ToJson()}'");
+            var result = await _mediator.Send(command);
+            return CreatedAtAction(nameof(GetEnterprise), new { id = command.Id }, command);
         }
 
         [HttpDelete]

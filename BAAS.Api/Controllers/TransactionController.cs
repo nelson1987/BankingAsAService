@@ -55,9 +55,10 @@ namespace Baas.Api.Controllers
         OperationId = "CreateValue",
         Tags = new[] { "Values" }
     )]
-        public async Task<IActionResult> Create([FromBody] GetTransactionQuery model)
+        public async Task<IActionResult> Create([FromBody] GetTransactionQuery query)
         {
-            var response = await _mediator.Send(model);
+            _logger.LogDebug($"----> Page No '{query.ToJson()}'");
+            var response = await _mediator.Send(query);
             return Ok(response);
             //if (response.Errors.Any())
             //{
