@@ -33,6 +33,7 @@ namespace Baas.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetEnterprise()/*[FromRoute] int id)*/
         {
+            _logger.LogDebug($"----> Page No GetEnterprise");
             var result = await _mediator.Send(new AccountQuery());
             //return BadRequest(ErroPadrao.Teste);
             //throw new HttpResponseException(400,"teste");
@@ -57,8 +58,9 @@ namespace Baas.Api.Controllers
 
         [HttpDelete]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteEnterprise([FromBody] DeleteAccountCommand empresa)
+        public async Task<IActionResult> DeleteEnterprise([FromBody] DeleteAccountCommand command)
         {
+            _logger.LogDebug($"----> Page No '{command.ToJson()}'");
             return Ok();
         }
     }

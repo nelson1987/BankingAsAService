@@ -33,6 +33,7 @@ namespace Baas.Api.Controllers
     )]
         public async Task<IActionResult> GetStatement()
         {
+            _logger.LogDebug($"----> Page No Get");
             var nome1 = "nelson";
             var nome2 = "Laurides";
             var verificacao = nome1 == nome2;

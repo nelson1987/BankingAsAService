@@ -25,6 +25,7 @@ namespace Baas.Api.Controllers
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         public async Task<IActionResult> GetAccount(string numero, int idCliente)
         {
+            _logger.LogDebug($"----> Page No '{numero.ToJson()}'");
             var response = await _mediator.Send(new AccountQuery()
             {
                 IdCliente = idCliente,
