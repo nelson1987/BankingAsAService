@@ -39,8 +39,9 @@ namespace Baas.Infra.Repositories
                                         ,IDT_CLIENTE)
                             VALUES(@NUMERO
                                         ,@TIPO
-                                        ,@CLIENTE);";
-                await conn.ExecuteAsync(sql: query, new { numero = dto.Numero, tipo = dto.Tipo, cliente = dto.IdCliente });
+                                        ,@CLIENTE);
+                            SELECT @@IDENTITY";
+                dto.Id = await conn.QueryFirstAsync<int>(sql: query, new { numero = dto.Numero, tipo = dto.Tipo, cliente = dto.IdCliente });
             }
             return Account.MappingFromDTO(dto);
         }

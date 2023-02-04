@@ -46,7 +46,7 @@ namespace Baas.Api.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEnterprise([FromBody] InsertAccountCommand command)
@@ -57,7 +57,7 @@ namespace Baas.Api.Controllers
         }
 
         [HttpDelete]
-        [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> DeleteEnterprise([FromBody] DeleteAccountCommand command)
         {
             _logger.LogDebug($"----> Page No '{command.ToJson()}'");

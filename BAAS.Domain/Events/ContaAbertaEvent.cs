@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 
 namespace Baas.Domain.Events
 {
@@ -93,10 +94,26 @@ namespace Baas.Domain.Events
     //}
     public class ContaAbertaEvent //: IEvent
     {
-       //public Guid CorrelationId { get { return Guid.NewGuid(); } }
-       //
-       //public string QueueName { get { return "Conta-Aberta-Event"; } }
+        //public Guid CorrelationId { get { return Guid.NewGuid(); } }
+        //
+        //public string QueueName { get { return "Conta-Aberta-Event"; } }
 
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public string Tipo { get; set; }
+        public int IdCliente { get; set; }
+        public string Agencia { get; set; }
+    }
+    public class ContaAbertaEventSync : IRequest<ContaAbertaEventSyncResponse>
+    {
+        public int Id { get; set; }
+        public string Numero { get; set; }
+        public string Tipo { get; set; }
+        public int IdCliente { get; set; }
+        public string Agencia { get; set; }
+    }
+    public class ContaAbertaEventSyncResponse
+    {
         public int Id { get; set; }
         public string Numero { get; set; }
         public string Tipo { get; set; }

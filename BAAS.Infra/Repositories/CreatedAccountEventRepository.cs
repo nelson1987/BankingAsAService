@@ -3,6 +3,7 @@ using Baas.Domain.Repositories.Contracts;
 using Baas.Domain.Repositories.DTOs;
 using Baas.Infra.DbContext;
 using MongoDB.Driver;
+using System;
 using System.Threading.Tasks;
 
 namespace Baas.Infra.Repositories
@@ -18,15 +19,22 @@ namespace Baas.Infra.Repositories
 
         public Task<Account> Get(AccountDTO conta)
         {
-            var aluno = _context.Alunos.Find(x => x.Id == conta.Id).FirstOrDefaultAsync();
-            return aluno;
+            return _context.Contas.Find(x => x.Numero == conta.Numero).FirstOrDefaultAsync();
         }
 
         public Task Insert(AccountDTO conta)
         {
-            Account account = Account.MappingFromDTO(conta);
-            _context.Alunos.InsertOne(account);
-            return Task.CompletedTask;
+            try
+            {
+                Account account = Account.MappingFromDTO(conta);
+                _context.Contas.InsertOne(account);
+                return Task.CompletedTask;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception($"Problema ao realizar uma inserção{ex.Message}");
+            }
         }
     }
 }

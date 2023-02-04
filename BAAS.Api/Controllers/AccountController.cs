@@ -35,7 +35,6 @@ namespace Baas.Api.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand command)
         {
             _logger.LogDebug($"----> Page No '{command.ToJson()}'");

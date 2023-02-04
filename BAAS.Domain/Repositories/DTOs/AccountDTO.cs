@@ -27,7 +27,8 @@ namespace Baas.Domain.Repositories.DTOs
             return new AccountDTO()
             {
                 IdCliente = request.IdCliente,
-                Tipo = request.Tipo
+                Tipo = request.Tipo,
+                Numero = request.Numero
             };
         }
 

@@ -3,5 +3,8 @@ docker pull rabbitmq:3.10-management
 docker run --rm -it --hostname my-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3.10-management
 docker ps
 --- Criando o Mongo
+docker pull mongo
+docker run -v ~/docker --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongo -e MONGO_INITDB_ROOT_PASSWORD=mongo1A2b3C mongo
+mongodb://mongo:mongo1A2b3C@localhost:27017/admin
 --- Criando o MsSql
 --- Criando a aplicação

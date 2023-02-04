@@ -1,7 +1,9 @@
 ﻿using Baas.Domain.Events;
 using Baas.Domain.Helpers;
 using MassTransit;
+using MediatR;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 
 namespace BAAS.Domain.Consumers
@@ -10,14 +12,31 @@ namespace BAAS.Domain.Consumers
         IConsumer<ContaAbertaEvent>
     {
         readonly ILogger<ContaAbertaConsumer> _logger;
+        readonly IMediator _mediator;
 
-        public ContaAbertaConsumer(ILogger<ContaAbertaConsumer> logger)
+        public ContaAbertaConsumer(ILogger<ContaAbertaConsumer> logger, IMediator mediator)
         {
             _logger = logger;
+            _mediator = mediator;
         }
         public async Task Consume(ConsumeContext<ContaAbertaEvent> context)
         {
-            _logger.LogInformation("Value: {0}", context.Message.ToJson());
+            try
+            {
+                var resultado = await _mediator.Send(new ContaAbertaEventSync()
+                {
+                    Numero = context.Message.Numero,
+                    Id = context.Message.Id,
+                    Agencia = context.Message.Agencia,
+                    IdCliente = context.Message.IdCliente,
+                    Tipo = context.Message.Tipo
+                });
+                _logger.LogInformation("Value: {0}", context.Message.ToJson());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Problema ao realizar uma inserção: {ex.Message}");
+            }
         }
     }
 
