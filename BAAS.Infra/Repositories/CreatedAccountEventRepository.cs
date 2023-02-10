@@ -4,6 +4,8 @@ using Baas.Domain.Repositories.DTOs;
 using Baas.Infra.DbContext;
 using MongoDB.Driver;
 using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Baas.Infra.Repositories
@@ -17,11 +19,10 @@ namespace Baas.Infra.Repositories
             _context = context;
         }
 
-        public Task<Account> Get(AccountDTO conta)
+        public async Task<IList<Account>> Get(AccountDTO dto)
         {
-            return _context.Contas.Find(x => x.Numero == conta.Numero).FirstOrDefaultAsync();
+            return await _context.Contas.Find(x => x.IdCliente == dto.IdCliente && x.Tipo == dto.Tipo && x.Numero == dto.Numero).ToListAsync();
         }
-
         public Task Insert(AccountDTO conta)
         {
             try

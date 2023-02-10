@@ -415,17 +415,12 @@ public class JwtTokenHandler
     }
 }
 Utilize a classe JwtTokenHandler para gerar e validar o token em sua aplicação:
-Copy code
+
+
 var jwtTokenHandler = new JwtTokenHandler("SECRET_KEY");
 
 // Gerando token
-var token = jwtToken
-
-
-
-Nelson Neto
-Concluir resposta 
-jwtTokenHandler.CreateToken("partner_name", DateTime.Now.AddMinutes(30));
+var token = jwtTokenHandler.CreateToken("partner_name", DateTime.Now.AddMinutes(30));
 
 // Validando token
 JwtToken jwtToken;

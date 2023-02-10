@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAAS.Api", "BAAS.Api\BAAS.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAAS.Domain.Tests", "BAAS.Domain.Tests\BAAS.Domain.Tests.csproj", "{C0DD3F09-0902-46F4-B2F5-9DAB354BD6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BAAS.Events", "BAAS.Events\BAAS.Events.csproj", "{67FC436B-2F82-42AD-BE71-2402CEDF707A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BAAS.Events", "BAAS.Events\BAAS.Events.csproj", "{67FC436B-2F82-42AD-BE71-2402CEDF707A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Baas.ImplementationTest", "Baas.ImplementationTest\Baas.ImplementationTest.csproj", "{BE3C575D-B641-409C-B934-8D021F05C01D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{67FC436B-2F82-42AD-BE71-2402CEDF707A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67FC436B-2F82-42AD-BE71-2402CEDF707A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67FC436B-2F82-42AD-BE71-2402CEDF707A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE3C575D-B641-409C-B934-8D021F05C01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE3C575D-B641-409C-B934-8D021F05C01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE3C575D-B641-409C-B934-8D021F05C01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE3C575D-B641-409C-B934-8D021F05C01D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

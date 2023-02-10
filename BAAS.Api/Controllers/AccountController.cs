@@ -1,8 +1,10 @@
 ﻿using Baas.Domain.Account.Create;
 using Baas.Domain.Commands;
+using BAAS.Api.Security;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Threading.Tasks;
 
 namespace Baas.Api.Controllers
@@ -22,15 +24,29 @@ namespace Baas.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
-        public async Task<IActionResult> GetAccount(string numero, int idCliente)
+        [HttpGet("{IdCliente}/{Tipo}/{Numero}")]
+        public async Task<IActionResult> GetAccount([FromRoute] AccountQuery query)
         {
-            _logger.LogDebug($"----> Page No '{numero.ToJson()}'");
-            var response = await _mediator.Send(new AccountQuery()
+            _logger.LogDebug($"----> Page No '{query.ToJson()}'");
+            var response = await _mediator.Send(query);
+            #region
+            var jwtTokenHandler = new JwtTokenHandler("SECRET_KEY");
+
+            // Gerando token
+            var token = jwtTokenHandler.CreateToken("partner_name", DateTime.Now.AddMinutes(30));
+
+            // Validando token
+            JwtToken jwtToken;
+            if (jwtTokenHandler.ValidateToken(token.Token, out jwtToken))
             {
-                IdCliente = idCliente,
-                Numero = numero
-            });
+                // Token válido
+                // Faça alguma coisa com jwtToken.Partner
+            }
+            else
+            {
+                // Token inválido
+            }
+            #endregion
             return Ok(response);
         }
 

@@ -1,39 +1,3 @@
-Como criar um projeto c#7.0, com o padrão CQRS. Conectando um banco de dados SQLServer no servidor LocalDb para realizar o command, e um banco de dados MongoDb, no servidor localhost para realizar o query e utilizando uma fila no rabbitMq para realizar um evento de sincronização entre os 2 bancos de dados.
-
-Para criar um projeto C# 7.0 com o padrão CQRS, você precisará seguir os seguintes passos:
-
-Crie um novo projeto C# no Visual Studio. Escolha a opção "Aplicativo Console" para este exemplo.
-
-Instale as dependências do projeto:
-
-Para se conectar ao SQLServer LocalDb, você precisará instalar o pacote NuGet "Microsoft.EntityFrameworkCore"
-Para se conectar ao MongoDb, você precisará instalar o pacote NuGet "MongoDB.Driver"
-Para utilizar a fila do RabbitMq, você precisará instalar o pacote NuGet "RabbitMQ.Client"
-Crie uma pasta "Commands" e outra "Queries" no seu projeto para separar os comandos e as consultas.
-
-Crie os modelos de dados para as entidades que serão utilizadas no projeto, tanto para o SQLServer quanto para o MongoDb.
-
-Crie as classes de contexto para o SQLServer LocalDb e para o MongoDb.
-
-Crie as classes de comando para as operações de escrita no SQLServer LocalDb.
-
-Crie as classes de consulta para as operações de leitura no MongoDb.
-
-Utilize a fila do RabbitMq para criar um evento de sincronização entre os dois bancos de dados.
-
-Utilize as classes de comando e consulta nos métodos do seu aplicativo console para testar as operações de escrita e leitura e verificar se o evento de sincronização está funcionando corretamente.
-
-Obs: É importante salientar que esse exemplo é bastante complexo, e para realizar essa tarefa com sucesso, é preciso ter uma boa compreensão de CQRS, arquitetura de banco de dados e conhecimentos avançados em C#.
-
-
-
-
-Nelson Neto
-Conseguiria exemplificar com uma entidade chamada Aluno, contendo um int "Id, um "string" Nome, um string "Matricula", um dateTime "inscricao"
-Claro, aqui está um exemplo de como criar uma entidade Aluno usando CQRS, com conexão ao SQLServer LocalDb e MongoDb e utilizando uma fila no RabbitMq para sincronização:
-
-Crie o modelo de dados para a entidade Aluno no SQLServer LocalDb:
-Copy code
 public class Aluno
 {
     public int Id { get; set; }
@@ -41,8 +5,7 @@ public class Aluno
     public string Matricula { get; set; }
     public DateTime Inscricao { get; set; }
 }
-Crie o modelo de dados para a entidade Aluno no MongoDb:
-Copy code
+
 public class Aluno
 {
     [BsonId]
@@ -51,10 +14,7 @@ public class Aluno
     public string Matricula { get; set; }
     public DateTime Inscricao { get; set; }
 }
-Observe que no MongoDb, foi utilizado o atributo [BsonId] para definir o campo Id como chave primaria
 
-Crie o contexto do SQLServer LocalDb:
-Copy code
 public class LocalDbContext : DbContext
 {
     public DbSet<Aluno> Alunos { get; set; }
@@ -64,8 +24,7 @@ public class LocalDbContext : DbContext
         optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AlunoDb;Trusted_Connection=True;");
     }
 }
-Crie o contexto do MongoDb:
-Copy code
+
 public class MongoDbContext
 {
     private readonly IMongoDatabase _database;
@@ -78,8 +37,7 @@ public class MongoDbContext
 
     public IMongoCollection<Aluno> Alunos => _database.GetCollection<Aluno>("Alunos");
 }
-Crie as classes de comando para as operações de escrita no SQLServer LocalDb:
-Copy code
+
 public class CriarAlunoCommand
 {
     public string Nome { get; set; }

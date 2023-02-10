@@ -115,28 +115,10 @@ public class CartaoRepository
             parametros.Add("@pagina", pagina);
             parametros.Add("@tamanhoPagina", tamanhoPagina);
             parametros.Add("@colunaOrdenacaoCrescente", colunaOrdenacaoCrescente);
-            parametros.Add("@colunaOrden
-
-
-
-Nelson Neto
-Concluir resposta 
-etros.Add("@colunaOrdenacaoDecrescente", colunaOrdenacaoDecrescente);
-parametros.Add("@colunasSelecionadas", colunasSelecionadas);
-parametros.Add("@textoBusca", textoBusca);
-
-Copy code
+            parametros.Add("@colunaOrdenacaoDecrescente", colunaOrdenacaoDecrescente);
+            parametros.Add("@colunasSelecionadas", colunasSelecionadas);
+            parametros.Add("@textoBusca", textoBusca);
         return connection.Query<Cartao>("paginar_cartao", parametros, commandType: CommandType.StoredProcedure);
     }
 }
 }
-
-Copy code
-This class uses the Dapper library to execute the stored procedure `paginar_cartao` that you created earlier. The class receives the parameters to be passed to the stored procedure in its constructor and the Paginar method. Inside the method, it creates a new SqlConnection with the connection string passed in the constructor, opens the connection and creates a DynamicParameters object to store the parameters passed to the method. The parameters are added to the DynamicParameters object with the appropriate name and value. The stored procedure is then executed by calling the Query method of the connection, passing in the name of the stored procedure, the DynamicParameters object, and specifying that the command type is a stored procedure. The result is returned as a list of Cartao objects.
-It's important to validate the input parameters before passing them to the stored procedure in order to prevent SQL injection and errors.
-
-
-
-Nelson Neto
-Explique as configurações do RabbitMq de suas filas, exchanges e etc. Para uma criança de 5 anos
-There was an error generating a response

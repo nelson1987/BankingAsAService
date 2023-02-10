@@ -7,7 +7,7 @@ namespace Baas.Domain.Entities
         public int Id { get; set; }
         public string Numero { get; set; }
         public string Tipo { get; set; }
-        public int IdCliente { get; set; }
+        public int? IdCliente { get; set; }
 
         public static Account MappingFromDTO(AccountDTO conta)
         {

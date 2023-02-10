@@ -9,7 +9,7 @@ namespace Baas.Domain.Repositories.DTOs
         public int Id { get; set; }
         public string Numero { get; set; }
         public string Tipo { get; set; }
-        public int IdCliente { get; set; }
+        public int? IdCliente { get; set; }
         public string Agencia { get; set; }
 
         internal static AccountDTO MappingFromModel(AberturaContaCommand request)
