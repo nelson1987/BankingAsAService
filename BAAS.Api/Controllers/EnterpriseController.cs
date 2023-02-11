@@ -22,16 +22,16 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+/*
         /// <summary>
         /// Criar Empresa
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
-        [HttpGet]/*("/Enterprise/{id:int}")]*/
+        [HttpGet]("/Enterprise/{id:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> GetEnterprise()/*[FromRoute] int id)*/
+        public async Task<IActionResult> GetEnterprise()/*[FromRoute] int id)
         {
             _logger.LogDebug($"----> Page No GetEnterprise");
             var result = await _mediator.Send(new AccountQuery());
@@ -63,5 +63,6 @@ namespace Baas.Api.Controllers
             _logger.LogDebug($"----> Page No '{command.ToJson()}'");
             return Ok();
         }
+        */
     }
 }

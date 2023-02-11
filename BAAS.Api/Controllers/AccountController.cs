@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Baas.Api.Controllers
 {
+    /*
+    Iniciar Abertura de Conta
+    Listar Contas
+    */
     [Route("api/[controller]")]
     [Produces("application/json")]
     [Consumes("application/json")]
@@ -23,7 +27,7 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+/*
         [HttpGet("{IdCliente}/{Tipo}/{Numero}")]
         public async Task<IActionResult> GetAccount([FromRoute] AccountQuery query)
         {
@@ -49,7 +53,7 @@ namespace Baas.Api.Controllers
             #endregion
             return Ok(response);
         }
-
+*/
         [HttpPost]
         public async Task<IActionResult> AbriConta([FromBody] AberturaContaCommand command)
         {

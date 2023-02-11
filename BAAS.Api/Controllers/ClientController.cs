@@ -20,7 +20,7 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+/*
         [HttpGet("{numero}/{idCliente}/{idEmpresa}")]
         public async Task<IActionResult> Get(string numero, int idCliente)
         {
@@ -46,7 +46,6 @@ namespace Baas.Api.Controllers
         //    //return Ok(response.Value);
         //}
 
-        /*
         [HttpDelete]
         public async Task<IActionResult> DeleteAccount([FromBody] AccountModel conta)
         {
