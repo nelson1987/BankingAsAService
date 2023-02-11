@@ -50,8 +50,7 @@ namespace Baas.Api.Controllers
             return Ok(retorno);
         }
         */
-        [HttpPost("create")]
-        
+        [HttpPost("create")]        
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AberturaContaCommandResponse))]
         [ProducesResponseType(typeof(string), 400)]
         [SwaggerOperation(

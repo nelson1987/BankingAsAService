@@ -34,8 +34,6 @@ namespace Baas.Domain.Handlers
          {
             try
             {
-                request.Validate();
-
                 _logger.LogInformation("Iniciando a abertura de conta {@request}", request);
 
                 AccountDTO conta = _mapper.Map<AccountDTO>(request);
@@ -46,7 +44,8 @@ namespace Baas.Domain.Handlers
                 _logger.LogInformation($"Conta {conta.ToJson()} aberta com sucesso.");
                 try
                 {
-                    await _publishEndpoint.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta));
+                    _publishEndpoint.Publish<ContaAbertaEvent>(_mapper.Map<ContaAbertaEvent>(conta))
+                        .ConfigureAwait(false);
                     _logger.LogInformation("Evento de conta aberta publicado com sucesso");
                 }
                 catch (Exception ex)

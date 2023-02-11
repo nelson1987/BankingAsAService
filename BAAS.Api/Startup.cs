@@ -3,11 +3,15 @@ using Baas.Api.Filters;
 using Baas.Domain.Commands;
 using Baas.Domain.Entities;
 using Baas.Domain.Repositories.Contracts;
+using Baas.Domain.Validators;
 using Baas.Infra.DbContext;
 using Baas.Infra.Repositories;
+using BAAS.Api.Middlewares;
 using BAAS.Domain.Consumers;
 using BAAS.Domain.Produces;
 using BAAS.Events;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -37,6 +41,8 @@ namespace Baas.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<AberturaCommandValidator>();
             services.AddControllers(options =>
             {
                 options.Filters.Add<HttpResponseExceptionFilter>();
@@ -113,6 +119,7 @@ namespace Baas.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Baas.Api v1"));
             }
 
+            app.UseMiddleware<ErrorHandlingMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseRouting();

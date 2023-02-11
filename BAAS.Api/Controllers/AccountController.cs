@@ -56,12 +56,6 @@ namespace Baas.Api.Controllers
             _logger.LogDebug($"----> Page No '{command.ToJson()}'");
             var response = await _mediator.Send(command);
             return Ok();
-            //if (response.Errors.Any())
-            //{
-            //    return BadRequest(response.Errors);
-            //}
-            //
-            //return Ok(response.Value);
         }
 
         /*
