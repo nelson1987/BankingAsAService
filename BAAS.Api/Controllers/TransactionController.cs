@@ -21,7 +21,7 @@ namespace Baas.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-
+/*
         [HttpGet]
         [ProducesResponseType(typeof(string), 200)]
         [ProducesResponseType(typeof(string), 400)]
@@ -75,5 +75,6 @@ namespace Baas.Api.Controllers
         //    var response = await _mediator.Send(model);
         //    return Ok();
         //}
+        */
     }
 }
